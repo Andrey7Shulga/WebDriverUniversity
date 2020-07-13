@@ -53,7 +53,7 @@ public class Testing extends BaseTest {
 
         cu.clickOnSubmitButton();
 
-        //get the element message
+        ///get the element message
         assertEquals(validMessage, cu.getTextFromValidMessage());
 
 
