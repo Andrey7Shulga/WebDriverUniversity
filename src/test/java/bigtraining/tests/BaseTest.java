@@ -1,9 +1,12 @@
 package bigtraining.tests;
 
+import bigtraining.listeners.WebDriverListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.log4j.BasicConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,6 +23,10 @@ public class BaseTest {
     @BeforeClass
     public void beforeTest () {
 
+        ///Log4J configuration
+        BasicConfigurator.configure();
+
+        //WebDriver setup
         WebDriverManager.chromedriver().setup();
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setHeadless(true);
@@ -29,6 +36,11 @@ public class BaseTest {
         driver.manage().window().maximize();
 
         wait = new WebDriverWait(driver, timeout);
+
+        //WebListener setup
+        EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
+        eventFiringWebDriver.register(new WebDriverListener());
+        driver = eventFiringWebDriver;
 
     }
 

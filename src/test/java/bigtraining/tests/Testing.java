@@ -2,11 +2,14 @@ package bigtraining.tests;
 
 import bigtraining.components.Helper;
 import bigtraining.components.Menu;
+import bigtraining.listeners.TestListener;
 import bigtraining.pages.ContactUs;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
 
+@Listeners(TestListener.class)
 
 public class Testing extends BaseTest {
 
@@ -31,7 +34,7 @@ public class Testing extends BaseTest {
         //click to get the 'Contact Us' Page
         mn.getContactUs();
 
-        ///switch to the next tab
+        //switch to the next tab
         hp.switchToTab(tabname);
 
         //type the data to the fields
