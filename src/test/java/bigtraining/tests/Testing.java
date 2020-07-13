@@ -65,7 +65,8 @@ public class Testing extends BaseTest {
     }
 
     @Test(dataProvider = "SubmitToUs", dataProviderClass = ContactUsDataProvider.class)
-    public void ContactUsDataProvider(String fnameValue, String lnameValue, String emailValue, String commentsValue, String message, String messageTwo) {
+    public void testContactUsDataProvider(String fnameValue, String lnameValue, String emailValue,
+                                      String commentsValue, String message, String messageTwo) {
 
         hp = new Helper(driver, wait);
         mn = new Menu(driver, wait);
@@ -89,32 +90,8 @@ public class Testing extends BaseTest {
         //click on submit button
         cu.clickOnSubmitButton();
 
-        //up to two strings error
-        String errorPageXpath = "//body/br";
-        int size;
-        List<WebElement> errorPage = driver.findElements(By.xpath(errorPageXpath));
-        WebElement body = driver.findElement(By.tagName("body"));
-
-        if (errorPage != null) {
-             size = errorPage.size();
-
-            if (size == 2) {
-
-                assertEquals(true, body.getText().contains(message));
-                assertEquals(true, body.getText().contains(messageTwo));
-
-            } else if (size == 1) {
-
-                assertEquals(true, body.getText().contains(message));
-
-            }
-
-        } else  {
-
-            assertEquals(true, body.getText().contains(message));
-
-        }
-
+        //messages assertion
+        hp.messagePageHandling(message, messageTwo);
 
         }
 

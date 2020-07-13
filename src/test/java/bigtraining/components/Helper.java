@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.testng.AssertJUnit.assertEquals;
+
 public class Helper {
 
      private WebDriver driver;
@@ -104,12 +106,39 @@ public class Helper {
         return false;
     }
 
-//    public void setValue (String xpath, String val) {
-//        element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
-//        element.clear();
-//        element.sendKeys(val);
-//
-//    }
+
+    public void messagePageHandling(String message, String messageTwo) {
+
+//        up to two strings error
+        String errorPageXpath = "//body/br";
+        int size;
+        List<WebElement> errorPage = driver.findElements(By.xpath(errorPageXpath));
+        WebElement body = driver.findElement(By.tagName("body"));
+
+        if (errorPage != null) {
+             size = errorPage.size();
+
+            if (size == 2) {
+
+                assertEquals(true, body.getText().contains(message));
+                assertEquals(true, body.getText().contains(messageTwo));
+
+            } else if (size == 1) {
+
+                assertEquals(true, body.getText().contains(message));
+
+            }
+
+        } else  {
+
+            assertEquals(true, body.getText().contains(message));
+
+        }
+
+
+    }
+
+
 
 
 
