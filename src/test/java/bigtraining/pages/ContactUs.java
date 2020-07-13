@@ -52,6 +52,15 @@ public class ContactUs {
 
     }
 
+    public void typeDataProvider (String fnameValue, String lnameValue, String emailValue, String commentsValue) {
+
+        setValue(fnameXpath, fnameValue);
+        setValue(lnameXpath, lnameValue);
+        setValue(emailXpath, emailValue);
+        setValue(commentsXpath, commentsValue);
+
+    }
+
     public void validateInputData () {
 
         assertEquals(getAtribute(fnameXpath, atribute), fnameValue);
