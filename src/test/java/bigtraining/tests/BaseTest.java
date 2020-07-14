@@ -42,6 +42,7 @@ public class BaseTest {
         eventFiringWebDriver.register(new WebDriverListener());
         driver = eventFiringWebDriver;
 
+
     }
 
     @AfterClass

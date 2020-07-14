@@ -5,14 +5,8 @@ import bigtraining.components.Menu;
 import bigtraining.listeners.TestListener;
 import bigtraining.pages.ContactUs;
 import dataprovider.ContactUsDataProvider;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.testng.AssertJUnit.assertEquals;
 
 @Listeners(TestListener.class)
@@ -22,6 +16,9 @@ public class Testing extends BaseTest {
      private Helper hp;
      private Menu mn;
      private ContactUs cu;
+
+    private String url = "http://webdriveruniversity.com/index.html";
+
 
 
     @Test
@@ -34,7 +31,6 @@ public class Testing extends BaseTest {
         String tabname = "WebDriver | Contact Us";
         String validMessage = "Thank You for your Message!";
 
-        String url = "http://webdriveruniversity.com/index.html";
         driver.get(url);
 
         //click to get the 'Contact Us' Page
@@ -72,9 +68,7 @@ public class Testing extends BaseTest {
         mn = new Menu(driver, wait);
         cu = new ContactUs(driver, wait);
 
-        String url = "http://webdriveruniversity.com/index.html";
         String tabname = "WebDriver | Contact Us";
-        String validMessage = "Thank You for your Message!";
 
         driver.get(url);
 
@@ -84,7 +78,7 @@ public class Testing extends BaseTest {
         //switch to the next tab
         hp.switchToTab(tabname);
 
-        //type data
+        //type data to be verified
         cu.typeDataProvider(fnameValue, lnameValue, emailValue, commentsValue);
 
         //click on submit button
