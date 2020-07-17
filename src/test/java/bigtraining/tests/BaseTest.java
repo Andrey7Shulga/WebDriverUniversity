@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
@@ -49,6 +50,7 @@ public class BaseTest {
     public void afterClass () {
 
         if(driver != null) {
+            driver.manage().deleteAllCookies();
             driver.quit();
         }
     }

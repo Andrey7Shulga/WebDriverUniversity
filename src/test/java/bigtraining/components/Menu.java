@@ -1,10 +1,8 @@
 package bigtraining.components;
 
-import bigtraining.tests.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,15 +10,16 @@ public class Menu {
 
     WebDriver driver;
     WebDriverWait wait;
+    Helper hp = new Helper(driver, wait);
 
     WebElement contact_us;
-    String contact_usXpath = "//h1[contains(text(), 'CONTACT US')]";
+//    String contact_usXpath = "//h1[contains(text(), 'CONTACT US')]";
+    String contact_usXpath = "//a[contains(@href, 'Contact-Us')]";
 
-    WebElement login_portal;
-    String login_portalXpath = "//h1[contains(text(), 'LOGIN PORTAL')]";
 
-    @FindBy (xpath = "//h1[contains(text(), 'BUTTON CLICKS')]")
     WebElement button_clicks;
+    String button_clicks_usXpath = "//h1[contains(text(), 'BUTTON CLICKS')]";
+
 
 
     public Menu(WebDriver driver, WebDriverWait wait) {
@@ -33,19 +32,24 @@ public class Menu {
 
     public void getContactUs () {
 
-        contact_us = driver.findElement(By.xpath(contact_usXpath));
-        wait.until(ExpectedConditions.visibilityOf(contact_us));
-        contact_us.click();
-    }
+        clickElement(contact_usXpath);
 
-    public void loginPortal () {
-
-        login_portal.click();
     }
 
     public void buttonClicks () {
 
-        button_clicks.click();
+        clickElement(button_clicks_usXpath);
+    }
+
+
+
+
+    public void clickElement(String elementXpath) {
+
+        WebElement element = driver.findElement(By.xpath(elementXpath));
+        wait.until(ExpectedConditions.visibilityOf(element));
+        element.click();
+
     }
 
 
