@@ -13,6 +13,7 @@ public class Helper {
 
     private WebDriver driver;
     private WebDriverWait wait;
+    private WebElement element;
 
 
     public Helper(WebDriver driver, WebDriverWait wait) {
@@ -110,7 +111,6 @@ public class Helper {
 
 //        up to two strings error
         String errorPageXpath = "//body/br";
-        WebElement body = driver.findElement(By.tagName("body"));
 
         int size;
         List<WebElement> errorPage = driver.findElements(By.xpath(errorPageXpath));
@@ -120,18 +120,18 @@ public class Helper {
 
             if (size == 2) {
 
-                assertEquals(true, body.getText().contains(message));
-                assertEquals(true, body.getText().contains(messageTwo));
+                assertEquals(true,bodyGetTextToCompare(message));
+                assertEquals(true, bodyGetTextToCompare(messageTwo));
 
             } else if (size == 1) {
 
-                assertEquals(true, body.getText().contains(message));
+                assertEquals(true, bodyGetTextToCompare(message));
 
             }
 
         } else  {
 
-            assertEquals(true, body.getText().contains(message));
+            assertEquals(true, bodyGetTextToCompare(message));
 
         }
 
@@ -142,6 +142,13 @@ public class Helper {
 
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
         return element.getText();
+
+    }
+
+    public boolean bodyGetTextToCompare(String text) {
+
+        element = driver.findElement(By.tagName("body"));
+        return element.getText().contains(text);
 
     }
 
