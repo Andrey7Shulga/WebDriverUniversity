@@ -7,6 +7,8 @@ import bigtraining.pages.ButtonClick;
 import bigtraining.pages.ContactUs;
 import dataprovider.ContactUsDataProvider;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertEquals;
@@ -149,6 +151,38 @@ public class Testing extends BaseTest {
 
 
      }
+
+     @Test
+    public void actionMoveClickTest() {
+
+         hp = new Helper(driver, wait);
+         mn = new Menu(driver, wait);
+         bc = new ButtonClick(driver, wait);
+         Actions actions = new Actions(driver);
+
+         String tabname = "WebDriver | Button Clicks";
+         String passText = "Action Move & Click";
+         String passTextXpath = "//*[@id='myModalMoveClick']//h4/b";
+
+         driver.get(url);
+
+         //click to get the 'BUTTON CLICKS' Page
+         mn.buttonClicks();
+
+         //switch to the next tab
+         hp.switchToTab(tabname);
+
+         bc.actionMoveAndClickElement();
+
+         //assert a success window message
+         assertEquals(passText, hp.getTextFromValidMessage(passTextXpath));
+
+
+     }
+
+
+
+
 
 
     }

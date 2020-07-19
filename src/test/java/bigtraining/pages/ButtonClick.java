@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,9 +14,7 @@ public class ButtonClick {
     private WebDriver driver;
     private WebDriverWait wait;
     private WebElement element;
-
-
-//    private Helper hp = new Helper();
+    private Actions actions;
 
     private String webElementClickButton_Xpath = "//*[@id=\"button1\"]";
 //    private String JavaScriptClickButton_CSS = "#button2";
@@ -44,6 +43,20 @@ public class ButtonClick {
         element.click();
 
     }
+
+    public void actionMoveAndClickElement() {
+
+        actions = new Actions(driver);
+        element = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(ActionMoveClickButton_CSS)));
+
+        actions.moveToElement(element, 50, 20);
+        actions.click();
+        actions.build().perform();
+
+    }
+
+
+
 
 
 
