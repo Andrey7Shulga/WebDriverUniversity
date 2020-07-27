@@ -49,9 +49,10 @@ public class ButtonClick {
         actions = new Actions(driver);
         element = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(ActionMoveClickButton_CSS)));
 
-        actions.moveToElement(element, 50, 20);
-        actions.click();
-        actions.build().perform();
+        actions.moveToElement(element, 50, 20)
+                .click()
+                .build()
+                .perform();
 
     }
 

@@ -5,6 +5,7 @@ import bigtraining.components.Menu;
 import bigtraining.listeners.TestListener;
 import bigtraining.pages.ButtonClick;
 import bigtraining.pages.ContactUs;
+import bigtraining.pages.ToDoList;
 import dataprovider.ContactUsDataProvider;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Action;
@@ -21,6 +22,8 @@ public class Testing extends BaseTest {
      private Menu mn;
      private ContactUs cu;
      private ButtonClick bc;
+     private ToDoList td;
+
 
     private String url = "http://webdriveruniversity.com/index.html";
 
@@ -158,7 +161,6 @@ public class Testing extends BaseTest {
          hp = new Helper(driver, wait);
          mn = new Menu(driver, wait);
          bc = new ButtonClick(driver, wait);
-         Actions actions = new Actions(driver);
 
          String tabname = "WebDriver | Button Clicks";
          String passText = "Action Move & Click";
@@ -176,6 +178,30 @@ public class Testing extends BaseTest {
 
          //assert a success window message
          assertEquals(passText, hp.getTextFromValidMessage(passTextXpath));
+
+
+     }
+
+     @Test
+    public void toDoListTest() {
+
+         hp = new Helper(driver, wait);
+         mn = new Menu(driver, wait);
+         td = new ToDoList(driver, wait);
+
+         String tabname = "WebDriver | To Do List";
+
+
+         driver.get(url);
+
+
+         mn.toDoListClick();
+
+         //switch to the next tab
+         hp.switchToTab(tabname);
+
+         td.plusButtonFunctionality();
+
 
 
      }

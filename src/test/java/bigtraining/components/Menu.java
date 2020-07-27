@@ -8,17 +8,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Menu {
 
-    WebDriver driver;
-    WebDriverWait wait;
-    Helper hp = new Helper(driver, wait);
+    private WebDriver driver;
+    private WebDriverWait wait;
+//    Helper hp = new Helper(driver, wait);
 
-    WebElement contact_us;
-//    String contact_usXpath = "//h1[contains(text(), 'CONTACT US')]";
     String contact_usXpath = "//a[contains(@href, 'Contact-Us')]";
-
-
-    WebElement button_clicks;
     String button_clicks_usXpath = "//h1[contains(text(), 'BUTTON CLICKS')]";
+//    String toDoList_xPath = "//h1[contains(text(), 'TO DO LIST')]";
+    String toDoList_xPath = "//a[contains(@href, 'To-Do')]";
+
+
 
 
 
@@ -39,6 +38,11 @@ public class Menu {
     public void buttonClicks () {
 
         clickElement(button_clicks_usXpath);
+    }
+
+    public void toDoListClick() {
+
+        clickElement(toDoList_xPath);
     }
 
 

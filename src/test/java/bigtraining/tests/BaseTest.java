@@ -1,6 +1,10 @@
 package bigtraining.tests;
 
+import bigtraining.components.Helper;
+import bigtraining.components.Menu;
 import bigtraining.listeners.WebDriverListener;
+import bigtraining.pages.ButtonClick;
+import bigtraining.pages.ContactUs;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.BasicConfigurator;
 import org.openqa.selenium.WebDriver;
@@ -16,8 +20,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    protected static WebDriver driver;
-    protected static WebDriverWait wait;
+    static WebDriver driver;
+    static WebDriverWait wait;
     private int implicitTime = 5;
     private int timeout = 10;
 
