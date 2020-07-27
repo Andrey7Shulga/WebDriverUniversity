@@ -44,7 +44,7 @@ public class Testing extends BaseTest {
         //click to get the 'Contact Us' Page
         mn.getContactUs();
 
-        //switch to the next tab
+        ///switch to the next tab
         hp.switchToTab(tabname);
 
         //type the data to the fields
