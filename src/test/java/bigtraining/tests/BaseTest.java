@@ -18,8 +18,6 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-//    protected static WebDriver driver;
-//    protected static WebDriverWait wait;
     protected WebDriver driver;
     protected WebDriverWait wait;
 
@@ -39,24 +37,19 @@ public class BaseTest {
 
         ///Log4J configuration
         BasicConfigurator.configure();
-
-
-
-
+        //WebDriver setup
+        WebDriverManager.chromedriver().setup();
 
         hp = new Helper(driver, wait);
         mn = new Menu(driver, wait);
         cu = new ContactUs(driver, wait);
         bc = new ButtonClick(driver, wait);
 
-
     }
 
     @BeforeTest
     public void beforeTest() {
 
-        //WebDriver setup
-        WebDriverManager.chromedriver().setup();
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setHeadless(true);
 //        driver = new ChromeDriver(chromeOptions);
@@ -72,8 +65,6 @@ public class BaseTest {
         driver = eventFiringWebDriver;
 
         driver.get(url);
-
-
 
     }
 
@@ -94,8 +85,5 @@ public class BaseTest {
             driver.quit();
         }
     }
-
-
-
 
 }
