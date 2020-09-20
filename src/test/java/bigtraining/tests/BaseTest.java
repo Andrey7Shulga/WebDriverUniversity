@@ -37,8 +37,6 @@ public class BaseTest {
 
         ///Log4J configuration
         BasicConfigurator.configure();
-        //WebDriver setup
-        WebDriverManager.chromedriver().setup();
 
         hp = new Helper(driver, wait);
         mn = new Menu(driver, wait);
@@ -50,6 +48,8 @@ public class BaseTest {
     @BeforeTest
     public void beforeTest() {
 
+        //WebDriver setup
+        WebDriverManager.chromedriver().setup();
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setHeadless(true);
 //        driver = new ChromeDriver(chromeOptions);
