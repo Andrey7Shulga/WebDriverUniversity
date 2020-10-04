@@ -12,13 +12,17 @@ public class Menu {
     WebDriverWait wait;
     Helper hp = new Helper(driver, wait);
 
-    WebElement contact_us;
+//    WebElement contact_us;
+
 //    String contact_usXpath = "//h1[contains(text(), 'CONTACT US')]";
     String contact_usXpath = "//a[contains(@href, 'Contact-Us')]";
 
 
-    WebElement button_clicks;
+//    WebElement button_clicks;
+
     String button_clicks_usXpath = "//h1[contains(text(), 'BUTTON CLICKS')]";
+    String toDoList_click_Xpath = "//h1[contains(text(), 'TO DO LIST')]";
+
 
 
 
@@ -41,6 +45,12 @@ public class Menu {
         clickElement(button_clicks_usXpath);
     }
 
+    public void toDoListClick () {
+
+        clickElement(toDoList_click_Xpath);
+
+    }
+
 
 
 
@@ -51,6 +61,8 @@ public class Menu {
         element.click();
 
     }
+
+
 
 
 
