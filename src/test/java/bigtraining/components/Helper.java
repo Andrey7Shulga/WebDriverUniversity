@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class Helper {
 
@@ -90,6 +91,8 @@ public class Helper {
     public boolean switchToTab(String tabName){
 
 //        log.debug("Switch to {} tab",tabName);
+//        ArrayList<String> tab = new ArrayList(driver.getWindowHandles());
+//        ArrayList<String> tabList = new ArrayList();
         ArrayList<String> tab = new ArrayList(driver.getWindowHandles());
         ArrayList<String> tabList = new ArrayList();
 
@@ -120,18 +123,18 @@ public class Helper {
 
             if (size == 2) {
 
-                assertEquals(true,bodyGetTextToCompare(message));
-                assertEquals(true, bodyGetTextToCompare(messageTwo));
+                assertTrue(bodyGetTextToCompare(message));
+                assertTrue(bodyGetTextToCompare(messageTwo));
 
             } else if (size == 1) {
 
-                assertEquals(true, bodyGetTextToCompare(message));
+                assertTrue(bodyGetTextToCompare(message));
 
             }
 
         } else  {
 
-            assertEquals(true, bodyGetTextToCompare(message));
+            assertTrue(bodyGetTextToCompare(message));
 
         }
 
@@ -140,7 +143,7 @@ public class Helper {
 
     public String getTextFromValidMessage(String elementXpath) {
 
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
         return element.getText();
 
     }
@@ -155,14 +158,10 @@ public class Helper {
 
     public void clickElement(String elementXpath) {
 
-        WebElement element = driver.findElement(By.xpath(elementXpath));
+        element = driver.findElement(By.xpath(elementXpath));
         wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
 
     }
-
-
-
-
 
 }
