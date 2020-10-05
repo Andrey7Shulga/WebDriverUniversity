@@ -20,7 +20,6 @@ public class ToDoList {
     private WebDriverWait wait;
     private Actions act;
 
-
     String nameToDelete = "Practice magic";
     String newName = "New age";
     int index;
