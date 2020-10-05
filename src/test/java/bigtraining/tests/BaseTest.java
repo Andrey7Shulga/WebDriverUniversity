@@ -5,6 +5,7 @@ import bigtraining.components.Menu;
 import bigtraining.listeners.WebDriverListener;
 import bigtraining.pages.ButtonClick;
 import bigtraining.pages.ContactUs;
+import bigtraining.pages.ToDoList;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.BasicConfigurator;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,8 @@ public class BaseTest {
     protected Menu mn;
     protected ContactUs cu;
     protected ButtonClick bc;
+    protected ToDoList tdl;
+
 
     private final int implicitTime = 5;
     private final int timeout = 10;
@@ -42,6 +45,7 @@ public class BaseTest {
         mn = new Menu(driver, wait);
         cu = new ContactUs(driver, wait);
         bc = new ButtonClick(driver, wait);
+        tdl = new ToDoList(driver, wait);
 
     }
 
