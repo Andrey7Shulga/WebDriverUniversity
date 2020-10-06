@@ -14,23 +14,21 @@ public class ContactUs {
     private WebDriver driver;
     private WebDriverWait wait;
     private WebElement element;
-    private Helper hp;
 
-    private String fnameXpath = "//*[@name='first_name']";
-    private String lnameXpath = "//*[@name='last_name']";
-    private String emailXpath = "//*[@name='email']";
-    private String commentsXpath = "//*[@name='message']";
-    private String resetButton = "//*[@type='reset']";
-    private String submitButton = "//*[@type='submit']";
-    private String validMessageXpath = "//div[@id='contact_reply']/h1";
+    private final String fnameXpath = "//*[@name='first_name']";
+    private final String lnameXpath = "//*[@name='last_name']";
+    private final String emailXpath = "//*[@name='email']";
+    private final String commentsXpath = "//*[@name='message']";
+    private final String fnameValue = "Chris";
+    private final String lnameValue = "Boil";
+    private final String emailValue = "1@hotmail.com";
+    private final String commentsValue = "Hello, World";
+    private final String atribute = "value";
 
-
-    private String fnameValue = "Chris";
-    private String lnameValue = "Boil";
-    private String emailValue = "1@hotmail.com";
-    private String commentsValue = "Hello, World";
-
-    private String atribute = "value";
+    public static final String tabname = "WebDriver | Contact Us";
+    public static final String resetButtonXpath = "//*[@type='reset']";
+    public static final String submitButtonXpath = "//*[@type='submit']";
+    public static final String validMessageXpath = "//div[@id='contact_reply']/h1";
 
 
     public ContactUs(WebDriver driver, WebDriverWait wait) {
@@ -61,28 +59,20 @@ public class ContactUs {
 
     public void validateInputData () {
 
-        assertEquals(getAtribute(fnameXpath, atribute), fnameValue);
-        assertEquals(getAtribute(lnameXpath, atribute), lnameValue);
-        assertEquals(getAtribute(emailXpath, atribute), emailValue);
-        assertEquals(getAtribute(commentsXpath, atribute), commentsValue);
+        assertEquals(getAttribute(fnameXpath, atribute), fnameValue);
+        assertEquals(getAttribute(lnameXpath, atribute), lnameValue);
+        assertEquals(getAttribute(emailXpath, atribute), emailValue);
+        assertEquals(getAttribute(commentsXpath, atribute), commentsValue);
 
     }
 
     public void validateResetOption () {
 
-        assertEquals(getAtribute(fnameXpath, atribute), "");
-        assertEquals(getAtribute(lnameXpath, atribute), "");
-        assertEquals(getAtribute(emailXpath, atribute), "");
-        assertEquals(getAtribute(commentsXpath, atribute), "");
+        assertEquals(getAttribute(fnameXpath, atribute), "");
+        assertEquals(getAttribute(lnameXpath, atribute), "");
+        assertEquals(getAttribute(emailXpath, atribute), "");
+        assertEquals(getAttribute(commentsXpath, atribute), "");
 
-    }
-
-    public void clickOnResetButton() {
-        click(resetButton);
-    }
-
-    public void clickOnSubmitButton() {
-        click(submitButton);
     }
 
 
@@ -93,27 +83,12 @@ public class ContactUs {
 
     }
 
-    public String getTextFromValidMessage() {
 
-//        element = driver.findElement(By.xpath(xpath));
-        element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(validMessageXpath)));
-        return element.getText();
-    }
-
-    public String getAtribute (String xpath, String atr) {
+    public String getAttribute (String xpath, String atr) {
 
         element = driver.findElement(By.xpath(xpath));
         return element.getAttribute(atr);
     }
-
-    public void click(String xpath) {
-
-        element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
-        element.click();
-
-    }
-
-
 
 
 }

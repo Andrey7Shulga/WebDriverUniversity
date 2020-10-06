@@ -25,7 +25,6 @@ public class BaseTest {
     protected Helper hp;
     protected Menu mn;
     protected ContactUs cu;
-    protected ButtonClick bc;
     protected ToDoList tdl;
 
     protected final String url = "http://webdriveruniversity.com/index.html";

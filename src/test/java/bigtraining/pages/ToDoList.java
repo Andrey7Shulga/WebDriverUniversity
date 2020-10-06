@@ -1,6 +1,5 @@
 package bigtraining.pages;
 
-import bigtraining.components.Helper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -20,14 +19,15 @@ public class ToDoList {
     private final WebDriverWait wait;
     private final Actions act;
 
-    String nameToDelete = "Practice magic";
-    String newName = "New age";
+    public static final String nameToDelete = "Practice magic";
+    public static final String newName = "New age";
     int index;
     String elementDeleteButtonXpath = null;
     String elementToDeleteXpath = null;
 
     String containerListXpath = "//ul/li";
     String newElementFieldXpath = "//input";
+    public static final String elementXpathToFindText = "//body";
 
     public ToDoList (WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -80,12 +80,6 @@ public class ToDoList {
 
     }
 
-    public void isElementDeleted () {
-
-        wait.until(ExpectedConditions.not(
-                ExpectedConditions.textToBePresentInElementLocated(By.xpath("//body"), nameToDelete)));
-
-    }
 
     public void typeAndSubmitNewElement () {
 
@@ -97,28 +91,5 @@ public class ToDoList {
                 .build().perform();
 
     }
-
-    public void isNewElementPresent () {
-
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//ul/li[3]"), newName));
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

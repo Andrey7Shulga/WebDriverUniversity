@@ -1,7 +1,10 @@
 package bigtraining.tests;
 
+import bigtraining.components.Menu;
 import bigtraining.listeners.TestListener;
 import bigtraining.pages.ButtonClick;
+import bigtraining.pages.ContactUs;
+import bigtraining.pages.ToDoList;
 import dataprovider.ContactUsDataProvider;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Listeners;
@@ -17,14 +20,13 @@ public class Testing extends BaseTest {
     @Test
     public void testContactUsPage () {
 
-        String tabname = "WebDriver | Contact Us";
         String validMessage = "Thank You for your Message!";
 
         //click to get the 'Contact Us' Page
-        mn.getContactUs();
+        hp.clickElement(Menu.contact_usXpath);
 
         //switch to the next tab
-        hp.switchToTab(tabname);
+        hp.switchToTab(ContactUs.tabname);
 
         //type the data to the fields
         cu.typeData();
@@ -32,7 +34,7 @@ public class Testing extends BaseTest {
         //compare input data and actual data
         cu.validateInputData();
 
-        cu.clickOnResetButton();
+        hp.clickElement(ContactUs.resetButtonXpath);
 
         //validate all the fields to
         cu.validateResetOption();
@@ -40,10 +42,10 @@ public class Testing extends BaseTest {
         //reinput data to submit
         cu.typeData();
 
-        cu.clickOnSubmitButton();
+        hp.clickElement(ContactUs.submitButtonXpath);
 
         ///get the element message
-        assertEquals(validMessage, cu.getTextFromValidMessage());
+        assertEquals(validMessage, hp.getTextFromElement(ContactUs.validMessageXpath));
 
     }
 
@@ -51,27 +53,24 @@ public class Testing extends BaseTest {
     public void testContactUsDataProvider(String fnameValue, String lnameValue, String emailValue,
                                       String commentsValue, String message, String messageTwo) {
 
-        String tabname = "WebDriver | Contact Us";
-
         driver.get(url);
 
         //click to get the 'Contact Us' Page
-        mn.getContactUs();
+        hp.clickElement(Menu.contact_usXpath);
 
         //switch to the next tab
-        hp.switchToTab(tabname);
+        hp.switchToTab(ContactUs.tabname);
 
         //type data to be verified
         cu.typeDataProvider(fnameValue, lnameValue, emailValue, commentsValue);
 
         //click on submit button
-        cu.clickOnSubmitButton();
+        hp.clickElement(ContactUs.submitButtonXpath);
 
         //messages assertion
         hp.messagePageHandling(message, messageTwo);
 
-        }
-
+    }
 
 
      @Test
@@ -81,7 +80,7 @@ public class Testing extends BaseTest {
          String passTextXpath = "//*[@id='myModalClick']//h4";
 
          //click to get the 'BUTTON CLICKS' Page
-         mn.buttonClicks();
+         hp.clickElement(Menu.button_clicks_usXpath);
 
          //switch to the next tab
          hp.switchToTab(ButtonClick.tabName);
@@ -90,7 +89,7 @@ public class Testing extends BaseTest {
          hp.clickElement(ButtonClick.webElementClickButton_Xpath);
 
          //assert a success window message
-         assertEquals(passText, hp.getTextFromValidMessage(passTextXpath));
+         assertEquals(passText, hp.getTextFromElement(passTextXpath));
 
      }
 
@@ -103,7 +102,7 @@ public class Testing extends BaseTest {
          String passTextXpath = "//*[@id='myModalJSClick']//h4";
 
          //click to get the 'BUTTON CLICKS' Page
-         mn.buttonClicks();
+         hp.clickElement(Menu.button_clicks_usXpath);
 
          //switch to the next tab
          hp.switchToTab(ButtonClick.tabName);
@@ -111,7 +110,7 @@ public class Testing extends BaseTest {
          js.executeScript("document.querySelector('#button2').click();");
 
          //assert a success window message
-         assertEquals(passText, hp.getTextFromValidMessage(passTextXpath));
+         assertEquals(passText, hp.getTextFromElement(passTextXpath));
 
 
      }
@@ -123,7 +122,7 @@ public class Testing extends BaseTest {
          String passTextXpath = "//*[@id='myModalMoveClick']//h4/b";
 
          //click to get the 'BUTTON CLICKS' Page
-         mn.buttonClicks();
+         hp.clickElement(Menu.button_clicks_usXpath);
 
          //switch to the next tab
          hp.switchToTab(ButtonClick.tabName);
@@ -132,7 +131,7 @@ public class Testing extends BaseTest {
          hp.actionMoveAndClickElement(ButtonClick.ActionMoveClickButton_Xpath);
 
          //assert a success window message
-         assertEquals(passText, hp.getTextFromValidMessage(passTextXpath));
+         assertEquals(passText, hp.getTextFromElement(passTextXpath));
 
      }
 
@@ -143,7 +142,8 @@ public class Testing extends BaseTest {
         String tabName = "WebDriver | To Do List";
         String nameToDelete = "Practice magic";
 
-        mn.toDoListClick();
+        //click to get the 'TO DO LIST' Page
+        hp.clickElement(Menu.toDoList_click_Xpath);
 
         //switch to the next tab
         hp.switchToTab(tabName);
@@ -154,18 +154,17 @@ public class Testing extends BaseTest {
         tdl.findNeededElementXpath(containerNames, nameToDelete);
         tdl.hoverAnElementNeeded();
         tdl.deleteAnElementNeeded();
-        tdl.isElementDeleted();
+        hp.waitUntilElementIsAbsence(ToDoList.elementXpathToFindText, ToDoList.nameToDelete);
 
         //check a list of elements names
         tdl.checkContainerSizeAndGetNamesList(2);
 
         tdl.typeAndSubmitNewElement();
-        tdl.isNewElementPresent();
+        hp.waitUntilElementIsPresented(ToDoList.elementXpathToFindText, ToDoList.newName);
 
         //check a list of elements names
         tdl.checkContainerSizeAndGetNamesList(3);
 
     }
 
-
-    }
+}

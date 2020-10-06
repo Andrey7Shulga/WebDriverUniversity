@@ -142,7 +142,7 @@ public class Helper {
 
     }
 
-    public String getTextFromValidMessage(String elementXpath) {
+    public String getTextFromElement (String elementXpath) {
 
         element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
         return element.getText();
@@ -159,7 +159,7 @@ public class Helper {
 
     public void clickElement(String elementXpath) {
 
-        WebElement element = driver.findElement(By.xpath(elementXpath));
+        element = driver.findElement(By.xpath(elementXpath));
         wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
 
@@ -175,5 +175,27 @@ public class Helper {
         actions.build().perform();
 
     }
+
+    public void setValue (String xpath, String val) {
+
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+        element.clear();
+        element.sendKeys(val);
+
+    }
+
+    public void waitUntilElementIsAbsence (String xPath, String elementValue) {
+
+        wait.until(ExpectedConditions.not(
+                ExpectedConditions.textToBePresentInElementLocated(By.xpath(xPath), elementValue)));
+
+    }
+
+    public void waitUntilElementIsPresented (String xPath, String elementValue) {
+
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xPath), elementValue));
+
+    }
+
 
 }
