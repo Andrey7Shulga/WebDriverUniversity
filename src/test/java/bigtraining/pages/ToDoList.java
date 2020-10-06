@@ -16,9 +16,9 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class ToDoList {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
-    private Actions act;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
+    private final Actions act;
 
     String nameToDelete = "Practice magic";
     String newName = "New age";

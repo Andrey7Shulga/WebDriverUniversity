@@ -28,10 +28,6 @@ public class BaseTest {
     protected ButtonClick bc;
     protected ToDoList tdl;
 
-
-    private final int implicitTime = 5;
-    private final int timeout = 10;
-
     protected final String url = "http://webdriveruniversity.com/index.html";
 
 
@@ -44,7 +40,6 @@ public class BaseTest {
         hp = new Helper(driver, wait);
         mn = new Menu(driver, wait);
         cu = new ContactUs(driver, wait);
-        bc = new ButtonClick(driver, wait);
         tdl = new ToDoList(driver, wait);
 
     }
@@ -58,10 +53,10 @@ public class BaseTest {
 //        chromeOptions.setHeadless(true);
 //        driver = new ChromeDriver(chromeOptions);
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(implicitTime, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
-        wait = new WebDriverWait(driver, timeout);
+        wait = new WebDriverWait(driver, 10);
 
         //WebListener setup
         EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);

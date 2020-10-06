@@ -1,22 +1,17 @@
 package bigtraining.tests;
 
 import bigtraining.listeners.TestListener;
+import bigtraining.pages.ButtonClick;
 import dataprovider.ContactUsDataProvider;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import org.openqa.selenium.WebElement;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.testng.AssertJUnit.assertEquals;
 
 @Listeners(TestListener.class)
-
 public class Testing extends BaseTest {
 
     @Test
@@ -82,7 +77,6 @@ public class Testing extends BaseTest {
      @Test
      public void webElementClickTest () {
 
-         String tabname = "WebDriver | Button Clicks";
          String passText = "Congratulations!";
          String passTextXpath = "//*[@id='myModalClick']//h4";
 
@@ -90,14 +84,13 @@ public class Testing extends BaseTest {
          mn.buttonClicks();
 
          //switch to the next tab
-         hp.switchToTab(tabname);
+         hp.switchToTab(ButtonClick.tabName);
 
          //click the WebElement button
-         bc.clickXpath();
+         hp.clickElement(ButtonClick.webElementClickButton_Xpath);
 
          //assert a success window message
          assertEquals(passText, hp.getTextFromValidMessage(passTextXpath));
-
 
      }
 
@@ -106,7 +99,6 @@ public class Testing extends BaseTest {
 
          JavascriptExecutor js = (JavascriptExecutor) driver;
 
-         String tabname = "WebDriver | Button Clicks";
          String passText = "It’s that Easy!! Well I think it is.....";
          String passTextXpath = "//*[@id='myModalJSClick']//h4";
 
@@ -114,7 +106,7 @@ public class Testing extends BaseTest {
          mn.buttonClicks();
 
          //switch to the next tab
-         hp.switchToTab(tabname);
+         hp.switchToTab(ButtonClick.tabName);
 
          js.executeScript("document.querySelector('#button2').click();");
 
@@ -127,7 +119,6 @@ public class Testing extends BaseTest {
      @Test
     public void actionMoveClickTest() {
 
-         String tabname = "WebDriver | Button Clicks";
          String passText = "Action Move & Click";
          String passTextXpath = "//*[@id='myModalMoveClick']//h4/b";
 
@@ -135,9 +126,10 @@ public class Testing extends BaseTest {
          mn.buttonClicks();
 
          //switch to the next tab
-         hp.switchToTab(tabname);
+         hp.switchToTab(ButtonClick.tabName);
 
-         bc.actionMoveAndClickElement();
+         //getting MoveAndClick action
+         hp.actionMoveAndClickElement(ButtonClick.ActionMoveClickButton_Xpath);
 
          //assert a success window message
          assertEquals(passText, hp.getTextFromValidMessage(passTextXpath));
@@ -172,7 +164,6 @@ public class Testing extends BaseTest {
 
         //check a list of elements names
         tdl.checkContainerSizeAndGetNamesList(3);
-
 
     }
 
