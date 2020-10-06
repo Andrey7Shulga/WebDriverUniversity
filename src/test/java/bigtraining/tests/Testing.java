@@ -4,7 +4,7 @@ import bigtraining.components.Menu;
 import bigtraining.listeners.TestListener;
 import bigtraining.pages.ButtonClick;
 import bigtraining.pages.ContactUs;
-import bigtraining.pages.DropdownmenusCheckboxesRadiobuttons;
+import bigtraining.pages.DropD_CheckB_RadioB;
 import bigtraining.pages.ToDoList;
 import dataprovider.ContactUsDataProvider;
 import org.openqa.selenium.JavascriptExecutor;
@@ -180,13 +180,13 @@ public class Testing extends BaseTest {
         hp.switchToTab(tabName);
 
         //select the dropDown elements needed and check their presenting
-        hp.selectDropDownElement(DropdownmenusCheckboxesRadiobuttons.ddmFirstXpath, "sql");
-        hp.selectDropDownElement(DropdownmenusCheckboxesRadiobuttons.ddmSecondXpath, "junit");
-        hp.selectDropDownElement(DropdownmenusCheckboxesRadiobuttons.ddmThirdXpath, "css");
+        hp.selectDropDownElement(DropD_CheckB_RadioB.ddmFirstXpath, "sql");
+        hp.selectDropDownElement(DropD_CheckB_RadioB.ddmSecondXpath, "junit");
+        hp.selectDropDownElement(DropD_CheckB_RadioB.ddmThirdXpath, "css");
 
-        hp.waitUntilElementIsPresented(DropdownmenusCheckboxesRadiobuttons.ddmFirstAreaXpath, "SQL");
-        hp.waitUntilElementIsPresented(DropdownmenusCheckboxesRadiobuttons.ddmFirstAreaXpath, "JUnit");
-        hp.waitUntilElementIsPresented(DropdownmenusCheckboxesRadiobuttons.ddmFirstAreaXpath, "CSS");
+        hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "SQL");
+        hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "JUnit");
+        hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "CSS");
 
 
 
