@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class Helper {
@@ -141,6 +142,16 @@ public class Helper {
 
 
     }
+
+    public List<WebElement> collectWebElementsListAndCheckSize (String xPath, int size) {
+
+        List<WebElement> containerList = driver.findElements(By.xpath(xPath));
+        assertEquals(size, containerList.size());
+
+        return containerList;
+
+    }
+
 
     public void selectDropDownElement (String selectXpath, String value) {
 

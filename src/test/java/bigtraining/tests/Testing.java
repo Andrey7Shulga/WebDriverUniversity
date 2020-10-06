@@ -7,13 +7,15 @@ import bigtraining.pages.ContactUs;
 import bigtraining.pages.DropD_CheckB_RadioB;
 import bigtraining.pages.ToDoList;
 import dataprovider.ContactUsDataProvider;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.*;
 
 @Listeners(TestListener.class)
 public class Testing extends BaseTest {
@@ -188,13 +190,25 @@ public class Testing extends BaseTest {
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "JUnit");
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "CSS");
 
+        //get checkBoxes list
+        List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
+                DropD_CheckB_RadioB.checkBoxesCommonXpath, 4);
 
+        for (int i=0; i < abc.size(); i++ ) {
 
+            System.out.println(abc.get(i).getText());
+            int index = i + 1;
 
+            WebElement chechBox = driver.findElement(
+                    By.xpath(DropD_CheckB_RadioB.checkBoxesCommonXpath + "[" + index + "]" + "/input"));
 
+            if (chechBox.isSelected()) {
+                chechBox.click();
+            }
 
+            assertFalse(chechBox.isSelected());
 
-
+        }
 
     }
 

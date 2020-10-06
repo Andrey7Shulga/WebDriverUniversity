@@ -8,6 +8,10 @@ public class DropD_CheckB_RadioB {
     public static final String ddmAreaXpath = "//h2[contains(text(), 'Dropdown Menu(s)')]/following-sibling::div";
 
 
+//    public static final String checkBoxesCommonXpath = "//input[@type='checkbox']";
+    public static final String checkBoxesCommonXpath = "//label";
+
+
     public static final String checkBoxOpt1Xpath = "//input[@value='option-1']";
     public static final String checkBoxOpt2Xpath = "//input[@value='option-2']";
     public static final String checkBoxOpt3Xpath = "//input[@value='option-3']";
