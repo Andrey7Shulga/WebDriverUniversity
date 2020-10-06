@@ -4,6 +4,7 @@ import bigtraining.components.Menu;
 import bigtraining.listeners.TestListener;
 import bigtraining.pages.ButtonClick;
 import bigtraining.pages.ContactUs;
+import bigtraining.pages.DropdownmenusCheckboxesRadiobuttons;
 import bigtraining.pages.ToDoList;
 import dataprovider.ContactUsDataProvider;
 import org.openqa.selenium.JavascriptExecutor;
@@ -164,6 +165,36 @@ public class Testing extends BaseTest {
 
         //check a list of elements names
         tdl.checkContainerSizeAndGetNamesList(3);
+
+    }
+
+    @Test
+    public void dropdownCheckboxRadiobutton () {
+
+        String tabName = "WebDriver | Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)";
+
+        //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
+        hp.clickElement(Menu.dropChechRadio_click_Xpath);
+
+        //switch to the next tab
+        hp.switchToTab(tabName);
+
+        //select the dropDown elements needed and check their presenting
+        hp.selectDropDownElement(DropdownmenusCheckboxesRadiobuttons.ddmFirstXpath, "sql");
+        hp.selectDropDownElement(DropdownmenusCheckboxesRadiobuttons.ddmSecondXpath, "junit");
+        hp.selectDropDownElement(DropdownmenusCheckboxesRadiobuttons.ddmThirdXpath, "css");
+
+        hp.waitUntilElementIsPresented(DropdownmenusCheckboxesRadiobuttons.ddmFirstAreaXpath, "SQL");
+        hp.waitUntilElementIsPresented(DropdownmenusCheckboxesRadiobuttons.ddmFirstAreaXpath, "JUnit");
+        hp.waitUntilElementIsPresented(DropdownmenusCheckboxesRadiobuttons.ddmFirstAreaXpath, "CSS");
+
+
+
+
+
+
+
+
 
     }
 

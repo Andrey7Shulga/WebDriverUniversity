@@ -3,6 +3,7 @@ package bigtraining.components;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -140,6 +141,15 @@ public class Helper {
 
 
     }
+
+    public void selectDropDownElement (String selectXpath, String value) {
+
+        Select sel = new Select(driver.findElement(By.xpath(selectXpath)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(selectXpath)));
+        sel.selectByValue(value);
+
+    }
+
 
     public String getTextFromElement (String elementXpath) {
 
