@@ -23,7 +23,6 @@ public class BaseTest {
     protected WebDriverWait wait;
 
     protected Helper hp;
-    protected Menu mn;
     protected ContactUs cu;
     protected ToDoList tdl;
 
@@ -37,7 +36,6 @@ public class BaseTest {
         BasicConfigurator.configure();
 
         hp = new Helper(driver, wait);
-        mn = new Menu(driver, wait);
         cu = new ContactUs(driver, wait);
         tdl = new ToDoList(driver, wait);
 
