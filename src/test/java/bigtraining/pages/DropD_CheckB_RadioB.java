@@ -8,8 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.*;
 
 public class DropD_CheckB_RadioB {
 
@@ -19,6 +18,8 @@ public class DropD_CheckB_RadioB {
         this.wait = wait;
 
     }
+
+    public static final String tabName = "WebDriver | Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)";
 
     public static final String ddmFirstXpath = "//select[@id='dropdowm-menu-1']";
     public static final String ddmSecondXpath = "//select[@id='dropdowm-menu-2']";
@@ -42,6 +43,8 @@ public class DropD_CheckB_RadioB {
 
     public void selectNeededElements (List<WebElement> abc, String opt1, String opt2) {
 
+        int count = 0;
+
         for (int i=0; i < abc.size(); i++ ) {
 
             int index = i + 1;
@@ -58,7 +61,35 @@ public class DropD_CheckB_RadioB {
 
                 assertTrue(chechBox.isSelected());
             }
+
+            if (chechBox.isSelected()) {
+
+                count += 1;
+            }
         }
+
+        assertEquals(count, 2);
+
+    }
+
+    public void activateRadioButtonsAndCheckCounting (List<WebElement> abc) {
+
+        int count = 0;
+        for (int i=0; i < abc.size(); i++ ) {
+
+            int index = i + 1;
+            WebElement radioButton = wait.until(
+                    ExpectedConditions.elementToBeClickable(By.xpath(radioButtonsCommonXpath + "[" + index + "]")));
+
+            if (!radioButton.isSelected()) {
+                radioButton.click();
+                count++;
+
+            }
+            assertTrue(radioButton.isSelected());
+        }
+
+        assertEquals(abc.size(), count);
     }
 
 

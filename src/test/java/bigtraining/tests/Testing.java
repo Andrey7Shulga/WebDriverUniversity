@@ -10,6 +10,7 @@ import dataprovider.ContactUsDataProvider;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -171,19 +172,14 @@ public class Testing extends BaseTest {
     }
 
     @Test
-    public void dropdownCheckboxRadiobutton () {
-
-        String tabName = "WebDriver | Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)";
+    public void dropdownBlock () {
 
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
         hp.clickElement(Menu.dropChechRadio_click_Xpath);
 
         //switch to the next tab
-        hp.switchToTab(tabName);
+        hp.switchToTab(DropD_CheckB_RadioB.tabName);
 
-        /**
-         * DROPDOWN Block
-         */
         //select the dropDown elements needed and check their presenting
         hp.selectDropDownElement(DropD_CheckB_RadioB.ddmFirstXpath, "sql");
         hp.selectDropDownElement(DropD_CheckB_RadioB.ddmSecondXpath, "junit");
@@ -193,9 +189,18 @@ public class Testing extends BaseTest {
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "JUnit");
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "CSS");
 
-        /**
-         * CheckBoxes Block
-         */
+        hp.sleep(3000);
+
+    }
+
+    @Test
+    public void checkboxBlock () {
+
+        //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
+        hp.clickElement(Menu.dropChechRadio_click_Xpath);
+
+        //switch to the next tab
+        hp.switchToTab(DropD_CheckB_RadioB.tabName);
 
         //get checkBoxes list
         List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
@@ -213,5 +218,26 @@ public class Testing extends BaseTest {
         hp.sleep(3000);
 
     }
+
+    @Test
+    public void radioButtonsBlock () {
+
+        //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
+        hp.clickElement(Menu.dropChechRadio_click_Xpath);
+
+        //switch to the next tab
+        hp.switchToTab(DropD_CheckB_RadioB.tabName);
+
+        //get radioButtons list
+        List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
+                DropD_CheckB_RadioB.radioButtonsCommonXpath, 5);
+
+        //select radioButtons alternately checking if only one is selected at the same time
+        dcr.activateRadioButtonsAndCheckCounting(abc);
+
+        hp.sleep(3000);
+
+    }
+
 
 }
