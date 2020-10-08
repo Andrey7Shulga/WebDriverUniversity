@@ -19,11 +19,12 @@ public class ToDoList {
     private final WebDriverWait wait;
     private final Actions act;
 
+    public static final String tabName = "WebDriver | To Do List";
     public static final String nameToDelete = "Practice magic";
     public static final String newName = "New age";
     int index;
-    String elementDeleteButtonXpath = null;
-    String elementToDeleteXpath = null;
+    public static String elementDeleteButtonXpath = null;
+    public static String elementToDeleteXpath = null;
 
     String containerListXpath = "//ul/li";
     String newElementFieldXpath = "//input";
@@ -63,27 +64,12 @@ public class ToDoList {
         }
     }
 
-    public void hoverAnElementNeeded () {
-
-        assert elementToDeleteXpath != null;
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elementToDeleteXpath)));
-
-        act.moveToElement(element, 50, 20)
-                .build().perform();
-
-    }
-
-    public void deleteAnElementNeeded () {
-
-        WebElement deleteButton = driver.findElement(By.xpath(elementDeleteButtonXpath));
-        deleteButton.click();
-
-    }
 
 
     public void typeAndSubmitNewElement () {
 
-        WebElement newElementField = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(newElementFieldXpath)));
+        WebElement newElementField =
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(newElementFieldXpath)));
 
         act.click(newElementField)
                 .sendKeys(newName)

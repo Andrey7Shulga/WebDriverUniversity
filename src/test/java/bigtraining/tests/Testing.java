@@ -143,21 +143,20 @@ public class Testing extends BaseTest {
     @Test
     public void toDoList() {
 
-        String tabName = "WebDriver | To Do List";
-        String nameToDelete = "Practice magic";
-
         //click to get the 'TO DO LIST' Page
         hp.clickElement(Menu.toDoList_click_Xpath);
 
         //switch to the next tab
-        hp.switchToTab(tabName);
+        hp.switchToTab(ToDoList.tabName);
 
         //create and check a list of elements names
         List<String> containerNames = tdl.checkContainerSizeAndGetNamesList(3);
 
-        tdl.findNeededElementXpath(containerNames, nameToDelete);
-        tdl.hoverAnElementNeeded();
-        tdl.deleteAnElementNeeded();
+        tdl.findNeededElementXpath(containerNames, ToDoList.nameToDelete);
+        hp.hoverAnElementNeeded(ToDoList.elementToDeleteXpath);
+
+        //delete an element
+        hp.clickElement(ToDoList.elementDeleteButtonXpath);
         hp.waitUntilElementIsAbsence(ToDoList.elementXpathToFindText, ToDoList.nameToDelete);
 
         //check a list of elements names
@@ -168,6 +167,8 @@ public class Testing extends BaseTest {
 
         //check a list of elements names
         tdl.checkContainerSizeAndGetNamesList(3);
+
+        hp.sleep(3000);
 
     }
 

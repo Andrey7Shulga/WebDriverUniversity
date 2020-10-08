@@ -17,12 +17,14 @@ public class Helper {
     private WebDriver driver;
     private WebDriverWait wait;
     private WebElement element;
+    private Actions actions;
 
 
     public Helper(WebDriver driver, WebDriverWait wait) {
 
         this.driver = driver;
         this.wait = wait;
+        actions = new Actions(driver);
 
     }
 
@@ -195,20 +197,31 @@ public class Helper {
 
     public void clickElement(String elementXpath) {
 
-        element = driver.findElement(By.xpath(elementXpath));
-        wait.until(ExpectedConditions.visibilityOf(element));
+        element =
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elementXpath)));
+
         element.click();
 
     }
 
+
     public void actionMoveAndClickElement(String xPath) {
 
-        Actions actions = new Actions(driver);
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
 
         actions.moveToElement(element, 50, 20);
         actions.click();
         actions.build().perform();
+
+    }
+
+    public void hoverAnElementNeeded (String xPath) {
+
+        assert xPath != null;
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
+
+        actions.moveToElement(element, 50, 20)
+                .build().perform();
 
     }
 
