@@ -5,6 +5,7 @@ import bigtraining.components.Menu;
 import bigtraining.listeners.WebDriverListener;
 import bigtraining.pages.ButtonClick;
 import bigtraining.pages.ContactUs;
+import bigtraining.pages.DropD_CheckB_RadioB;
 import bigtraining.pages.ToDoList;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.BasicConfigurator;
@@ -25,6 +26,8 @@ public class BaseTest {
     protected Helper hp;
     protected ContactUs cu;
     protected ToDoList tdl;
+    protected DropD_CheckB_RadioB dcr;
+
 
     protected final String url = "http://webdriveruniversity.com/index.html";
 
@@ -38,6 +41,7 @@ public class BaseTest {
         hp = new Helper(driver, wait);
         cu = new ContactUs(driver, wait);
         tdl = new ToDoList(driver, wait);
+        dcr = new DropD_CheckB_RadioB(wait);
 
     }
 

@@ -1,5 +1,6 @@
 package bigtraining.components;
 
+import bigtraining.pages.DropD_CheckB_RadioB;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,8 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.*;
 
 public class Helper {
 
@@ -152,6 +152,22 @@ public class Helper {
 
     }
 
+    public void deselectAllElementsFromList (List<WebElement> abc, String startXpath, String endXpath) {
+
+        for (int i=0; i < abc.size(); i++ ) {
+
+            int index = i + 1;
+            WebElement chechBox = wait.until(
+                    ExpectedConditions.elementToBeClickable(By.xpath(startXpath + "[" + index + "]" + endXpath)));
+
+            if (chechBox.isSelected()) {
+                chechBox.click();
+            }
+
+            assertFalse(chechBox.isSelected());
+
+        }
+    }
 
     public void selectDropDownElement (String selectXpath, String value) {
 
@@ -214,6 +230,16 @@ public class Helper {
     public void waitUntilElementIsPresented (String xPath, String elementValue) {
 
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xPath), elementValue));
+
+    }
+
+    public void sleep (int timeout) {
+
+        try {
+            Thread.sleep(timeout);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 

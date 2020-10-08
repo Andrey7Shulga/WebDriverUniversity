@@ -181,6 +181,9 @@ public class Testing extends BaseTest {
         //switch to the next tab
         hp.switchToTab(tabName);
 
+        /**
+         * DROPDOWN Block
+         */
         //select the dropDown elements needed and check their presenting
         hp.selectDropDownElement(DropD_CheckB_RadioB.ddmFirstXpath, "sql");
         hp.selectDropDownElement(DropD_CheckB_RadioB.ddmSecondXpath, "junit");
@@ -190,25 +193,24 @@ public class Testing extends BaseTest {
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "JUnit");
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "CSS");
 
+        /**
+         * CheckBoxes Block
+         */
+
         //get checkBoxes list
         List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
                 DropD_CheckB_RadioB.checkBoxesCommonXpath, 4);
 
-        for (int i=0; i < abc.size(); i++ ) {
+        //check whether any checkbox is selected and deselect it if it is
+        hp.deselectAllElementsFromList(
+                abc,
+                DropD_CheckB_RadioB.checkBoxesCommonXpath,
+                DropD_CheckB_RadioB.checkBoxesEndXpath);
 
-            System.out.println(abc.get(i).getText());
-            int index = i + 1;
+        //select elements with names 'Option 2' and 'Option 4'
+        dcr.selectNeededElements(abc, "Option 2", "Option 4");
 
-            WebElement chechBox = driver.findElement(
-                    By.xpath(DropD_CheckB_RadioB.checkBoxesCommonXpath + "[" + index + "]" + "/input"));
-
-            if (chechBox.isSelected()) {
-                chechBox.click();
-            }
-
-            assertFalse(chechBox.isSelected());
-
-        }
+        hp.sleep(3000);
 
     }
 

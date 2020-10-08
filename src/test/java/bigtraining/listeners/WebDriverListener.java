@@ -121,10 +121,12 @@ public class WebDriverListener implements WebDriverEventListener {
     }
 
     public void beforeGetText(WebElement webElement, WebDriver webDriver) {
+        logger.info("Before get text " + webElement.toString());
 
     }
 
     public void afterGetText(WebElement webElement, WebDriver webDriver, String s) {
+        logger.info("After get text " + webElement.toString());
 
     }
 }
