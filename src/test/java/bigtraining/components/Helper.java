@@ -233,6 +233,20 @@ public class Helper {
 
     }
 
+    public void dragAndDrop (String dragXpath, String dropXpath) {
+
+        WebElement drag = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(dragXpath)));
+        WebElement drop = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(dropXpath)));
+
+        actions.dragAndDrop(drag, drop)
+                .pause(2000)
+                .build()
+                .perform();
+
+    }
+
+
+
     public void hoverAnElementNeeded (String xPath) {
 
         assert xPath != null;

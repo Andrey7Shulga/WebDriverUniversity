@@ -12,6 +12,7 @@ public class Menu {
     public static final String button_clicks_usXpath = "//h1[contains(text(), 'BUTTON CLICKS')]";
     public static final String toDoList_click_Xpath = "//h1[contains(text(), 'TO DO LIST')]";
     public static final String dropChechRadio_click_Xpath = "//h1[contains(text(), 'DROPDOWN, CHECKBOXE(S) & RADIO BUTTON(S)')]";
+    public static final String actions_Xpath = "//h1[contains(text(), 'ACTIONS')]";
 
 
     public Menu(WebDriver driver, WebDriverWait wait) {

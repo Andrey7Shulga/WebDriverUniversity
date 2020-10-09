@@ -2,10 +2,7 @@ package bigtraining.tests;
 
 import bigtraining.components.Menu;
 import bigtraining.listeners.TestListener;
-import bigtraining.pages.ButtonClick;
-import bigtraining.pages.ContactUs;
-import bigtraining.pages.DropD_CheckB_RadioB;
-import bigtraining.pages.ToDoList;
+import bigtraining.pages.*;
 import dataprovider.ContactUsDataProvider;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -274,6 +271,33 @@ public class Testing extends BaseTest {
         hp.checkWebElementsListForDisabledElement(abc, 3, "orange");
 
         hp.sleep(2000);
+
+    }
+
+    @Test
+    public void actions () {
+
+        //click to get the 'ACTIONS' Page
+        hp.clickElement(Menu.actions_Xpath);
+
+        //switch to the next tab
+        hp.switchToTab(Actions.tabName);
+
+
+        /**
+         * DROP AND DOWN Block
+         */
+        //drop and down and check the result
+        hp.dragAndDrop(Actions.dropFromXpath, Actions.dropToXpath);
+        hp.waitUntilElementIsPresented(Actions.dropToXpath, "Dropped!");
+
+
+
+
+
+
+
+
 
     }
 
