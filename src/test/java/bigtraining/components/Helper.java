@@ -1,6 +1,5 @@
 package bigtraining.components;
 
-import bigtraining.pages.DropD_CheckB_RadioB;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.*;
 
 public class Helper {
@@ -144,6 +144,24 @@ public class Helper {
 
 
     }
+
+    public void checkWebElementsListForDisabledElement(List<WebElement> abc, int size, String disabledValue) {
+
+        List<String> list = new ArrayList<String>();
+
+        for (WebElement dd : abc) {
+
+            if (dd.isEnabled()) {
+                dd.click();
+                list.add(dd.getAttribute("value"));
+            }
+        }
+
+        assertThat(list.size()).isEqualTo(size);
+        assertThat(list.toString()).doesNotContain(disabledValue);
+
+    }
+
 
     public List<WebElement> collectWebElementsListAndCheckSize (String xPath, int size) {
 

@@ -5,10 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -104,30 +102,8 @@ public class DropD_CheckB_RadioB {
                 }
             }
             assertEquals(abc.size()-1, count);
-
         }
-
     }
-
-    public void checkDisabledRadioButtons (List<WebElement> abc) {
-
-        List<String> list = new ArrayList<String>();
-
-        for (WebElement ss : abc) {
-
-            if (ss.isEnabled()) {
-
-                ss.click();
-                list.add(ss.getAttribute("value"));
-
-            }
-
-        }
-
-        assertThat(list.size()).isEqualTo(2);
-        assertThat(list.toString()).doesNotContain("cabbage");
-
-
-    }
+    
 
 }

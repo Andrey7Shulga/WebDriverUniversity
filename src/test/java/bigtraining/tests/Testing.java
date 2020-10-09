@@ -188,7 +188,7 @@ public class Testing extends BaseTest {
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "JUnit");
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "CSS");
 
-        hp.sleep(3000);
+        hp.sleep(2000);
 
     }
 
@@ -214,7 +214,7 @@ public class Testing extends BaseTest {
         //select elements with names 'Option 2' and 'Option 4'
         dcr.selectNeededElements(abc, "Option 2", "Option 4");
 
-        hp.sleep(3000);
+        hp.sleep(2000);
 
     }
 
@@ -234,7 +234,7 @@ public class Testing extends BaseTest {
         //select radioButtons alternately checking if only one is selected at the same time
         dcr.activateRadioButtonsAndCheckCounting (abc);
 
-        hp.sleep(3000);
+        hp.sleep(2000);
 
     }
 
@@ -251,16 +251,29 @@ public class Testing extends BaseTest {
         List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
                 DropD_CheckB_RadioB.rbDisablebCommonXpath, 3);
 
-        //select radioButtons alternately checking if only one is selected at the same time
-        dcr.checkDisabledRadioButtons (abc);
+        //select radioButtons alternately checking if only one is disabled
+        hp.checkWebElementsListForDisabledElement(abc, 2, "cabbage");
 
-        hp.sleep(3000);
+        hp.sleep(2000);
 
     }
 
     @Test
     public void dropDowmWithDisabledElement () {
 
+        //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
+        hp.clickElement(Menu.dropChechRadio_click_Xpath);
+
+        //switch to the next tab
+        hp.switchToTab(DropD_CheckB_RadioB.tabName);
+
+        //get dropDown options list
+        List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
+                DropD_CheckB_RadioB.ddDisablebCommonXpath + "/option", 4);
+
+        hp.checkWebElementsListForDisabledElement(abc, 3, "orange");
+
+        hp.sleep(2000);
 
     }
 

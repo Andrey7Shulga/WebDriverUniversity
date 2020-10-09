@@ -1,9 +1,7 @@
 package bigtraining.tests;
 
 import bigtraining.components.Helper;
-import bigtraining.components.Menu;
 import bigtraining.listeners.WebDriverListener;
-import bigtraining.pages.ButtonClick;
 import bigtraining.pages.ContactUs;
 import bigtraining.pages.DropD_CheckB_RadioB;
 import bigtraining.pages.ToDoList;
@@ -11,10 +9,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.BasicConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
