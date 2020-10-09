@@ -234,7 +234,7 @@ public class Testing extends BaseTest {
                 DropD_CheckB_RadioB.radioButtonsCommonXpath, 5);
 
         //select radioButtons alternately checking if only one is selected at the same time
-        dcr.activateRadioButtonsAndCheckCounting(abc);
+        dcr.activateRadioButtonsAndCheckCounting (abc);
 
         hp.sleep(3000);
 

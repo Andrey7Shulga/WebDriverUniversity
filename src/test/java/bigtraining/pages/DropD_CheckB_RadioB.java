@@ -72,29 +72,38 @@ public class DropD_CheckB_RadioB {
 
     }
 
+
     public void activateRadioButtonsAndCheckCounting (List<WebElement> abc) {
 
-        int count = 0;
-        for (int i=0; i < abc.size(); i++ ) {
 
-            int index = i + 1;
+        for (int y=0; y < abc.size(); y++ ) {
+
+            int ind = y + 1;
             WebElement radioButton = wait.until(
-                    ExpectedConditions.elementToBeClickable(By.xpath(radioButtonsCommonXpath + "[" + index + "]")));
+                    ExpectedConditions.elementToBeClickable(By.xpath(radioButtonsCommonXpath + "[" + ind + "]")));
 
+            //click if is not selected
             if (!radioButton.isSelected()) {
                 radioButton.click();
-                count++;
-
             }
             assertTrue(radioButton.isSelected());
+
+            //check others elements for being not selected
+            int count = 0;
+            for (int i=0; i < abc.size(); i++ ) {
+
+                int index = i + 1;
+                WebElement element = wait.until(
+                        ExpectedConditions.elementToBeClickable(By.xpath(radioButtonsCommonXpath + "[" + index + "]")));
+
+                if (!element.isSelected()) {
+                    count++;
+                }
+            }
+            assertEquals(abc.size()-1, count);
+
         }
 
-        assertEquals(abc.size(), count);
     }
-
-
-
-
-
 
 }
