@@ -1,14 +1,16 @@
 package bigtraining.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.AssertJUnit.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class DropD_CheckB_RadioB {
 
@@ -26,20 +28,21 @@ public class DropD_CheckB_RadioB {
     public static final String ddmThirdXpath = "//select[@id='dropdowm-menu-3']";
     public static final String ddmAreaXpath = "//h2[contains(text(), 'Dropdown Menu(s)')]/following-sibling::div";
 
-
-//    public static final String checkBoxesCommonXpath = "//input[@type='checkbox']";
     public static final String checkBoxesCommonXpath = "//label";
     public static final String checkBoxesEndXpath = "//input";
-
-
-    public static final String checkBoxOpt1Xpath = "//input[@value='option-1']";
-    public static final String checkBoxOpt2Xpath = "//input[@value='option-2']";
-    public static final String checkBoxOpt3Xpath = "//input[@value='option-3']";
-    public static final String checkBoxOpt4Xpath = "//input[@value='option-4']";
 
     //Radio buttons
     public static final String radioButtonsCommonXpath = "//*[@id='radio-buttons']/descendant::*[@type='radio']";
     //*[@type='radio'][ancestor::*[@id='radio-buttons']]
+
+    //Radio buttons disabled
+    public static final String rbDisablebCommonXpath = "//form[@id='radio-buttons-selected-disabled']//input";
+
+    //DropDown disabled
+    public static final String ddDisablebCommonXpath = "//select[@id='fruit-selects']";
+
+
+
 
     public void selectNeededElements (List<WebElement> abc, String opt1, String opt2) {
 
@@ -103,6 +106,27 @@ public class DropD_CheckB_RadioB {
             assertEquals(abc.size()-1, count);
 
         }
+
+    }
+
+    public void checkDisabledRadioButtons (List<WebElement> abc) {
+
+        List<String> list = new ArrayList<String>();
+
+        for (WebElement ss : abc) {
+
+            if (ss.isEnabled()) {
+
+                ss.click();
+                list.add(ss.getAttribute("value"));
+
+            }
+
+        }
+
+        assertThat(list.size()).isEqualTo(2);
+        assertThat(list.toString()).doesNotContain("cabbage");
+
 
     }
 

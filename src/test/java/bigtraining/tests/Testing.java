@@ -7,16 +7,14 @@ import bigtraining.pages.ContactUs;
 import bigtraining.pages.DropD_CheckB_RadioB;
 import bigtraining.pages.ToDoList;
 import dataprovider.ContactUsDataProvider;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.testng.AssertJUnit.*;
+import static org.testng.AssertJUnit.assertEquals;
 
 @Listeners(TestListener.class)
 public class Testing extends BaseTest {
@@ -237,6 +235,32 @@ public class Testing extends BaseTest {
         dcr.activateRadioButtonsAndCheckCounting (abc);
 
         hp.sleep(3000);
+
+    }
+
+    @Test
+    public void radioButtonsDisabledBlock () {
+
+        //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
+        hp.clickElement(Menu.dropChechRadio_click_Xpath);
+
+        //switch to the next tab
+        hp.switchToTab(DropD_CheckB_RadioB.tabName);
+
+        //get radioButtons list
+        List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
+                DropD_CheckB_RadioB.rbDisablebCommonXpath, 3);
+
+        //select radioButtons alternately checking if only one is selected at the same time
+        dcr.checkDisabledRadioButtons (abc);
+
+        hp.sleep(3000);
+
+    }
+
+    @Test
+    public void dropDowmWithDisabledElement () {
+
 
     }
 
