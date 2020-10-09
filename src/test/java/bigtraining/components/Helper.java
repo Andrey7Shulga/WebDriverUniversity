@@ -223,22 +223,38 @@ public class Helper {
     }
 
 
+
+    /**
+     * ACTIONS BLOCK - START
+     */
     public void actionMoveAndClickElement(String xPath) {
 
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
 
-        actions.moveToElement(element, 50, 20);
-        actions.click();
-        actions.build().perform();
+        actions.moveToElement(element, 50, 20)
+                .click()
+                .build()
+                .perform();
 
     }
 
-    public void dragAndDrop (String dragXpath, String dropXpath) {
+    public void dragAndDropTest(String dragXpath, String dropXpath) {
 
         WebElement drag = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(dragXpath)));
         WebElement drop = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(dropXpath)));
 
         actions.dragAndDrop(drag, drop)
+                .pause(2000)
+                .build()
+                .perform();
+
+    }
+
+    public void doubleClickTest (String xPath) {
+
+        WebElement doubleClick = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
+
+        actions.doubleClick(doubleClick)
                 .pause(2000)
                 .build()
                 .perform();
@@ -253,9 +269,32 @@ public class Helper {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
 
         actions.moveToElement(element, 50, 20)
-                .build().perform();
+                .build()
+                .perform();
 
     }
+
+    /**
+     * ACTIONS BLOCK - END
+     */
+
+    public String getTextFromAttribute (String xpath, String attribute) {
+
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+
+        return element.getAttribute(attribute);
+
+    }
+
+    public void waitAttributeToHaveValue (String xpath, String attribute, String value) {
+
+        wait.until(ExpectedConditions.attributeContains(By.xpath(xpath), attribute, value));
+
+
+    }
+
+
+
 
     public void setValue (String xpath, String val) {
 

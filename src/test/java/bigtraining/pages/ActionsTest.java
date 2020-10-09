@@ -1,8 +1,6 @@
 package bigtraining.pages;
 
-public class Actions {
-
-
+public class ActionsTest {
 
     public static final String tabName = "WebDriver | Actions";
 
@@ -23,11 +21,6 @@ public class Actions {
     public static final String rightLinkXpath2 = hoverRightXpath + descendantXpath + "[" + 2 + "]";
 
     public static final String clickAndHoldXpath = "//*[@id='click-box']";
-
-
-
-
-
 
 
 }
