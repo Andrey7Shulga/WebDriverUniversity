@@ -220,6 +220,19 @@ public class Helper {
 
         element.click();
 
+//        try {
+//            element.click();
+//        } catch (UnhandledAlertException f) {
+//            try {
+//                Alert alert = driver.switchTo().alert();
+//                String alertText = alert.getText();
+//                System.out.println("Alert data: " + alertText);
+//                alert.accept();
+//            } catch (NoAlertPresentException e) {
+//                e.printStackTrace();
+//            }
+//        }
+
     }
 
 

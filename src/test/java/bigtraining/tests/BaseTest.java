@@ -7,8 +7,10 @@ import bigtraining.pages.DropD_CheckB_RadioB;
 import bigtraining.pages.ToDoList;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.BasicConfigurator;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -50,10 +52,16 @@ public class BaseTest {
 
         //WebDriver setup
         WebDriverManager.chromedriver().setup();
-//        ChromeOptions chromeOptions = new ChromeOptions();
+
+        //driver options
+        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setHeadless(true);
 //        driver = new ChromeDriver(chromeOptions);
-        driver = new ChromeDriver();
+        chromeOptions.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.DISMISS); //ignore and dismiss unexpected alert window
+//        chromeOptions.setExperimentalOption(
+//        "excludeSwitches", Arrays.asList("disable-popup-blocking")); //close all the popup windows
+
+        driver = new ChromeDriver(chromeOptions);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 

@@ -283,10 +283,6 @@ public class Testing extends BaseTest {
         //switch to the next tab
         hp.switchToTab(ActionsTest.tabName);
 
-
-        /**
-         * DROP AND DOWN Block
-         */
         //drop and down and check the result
         hp.dragAndDropTest(ActionsTest.dropFromXpath, ActionsTest.dropToXpath);
         hp.waitUntilElementIsPresented(ActionsTest.dropToXpath, "Dropped!");
@@ -295,13 +291,13 @@ public class Testing extends BaseTest {
         hp.doubleClickTest(ActionsTest.doubleClickXpath);
         hp.waitAttributeToHaveValue(ActionsTest.doubleClickXpath, "class", "div-double-click double");
 
+        //hover on the left element
+        hp.hoverAnElementNeeded(ActionsTest.hoverLeftXpath);
+        hp.clickElement(ActionsTest.leftLinkXpath);
 
 
 
-
-
-
-
+        hp.sleep(2000);
 
     }
 
