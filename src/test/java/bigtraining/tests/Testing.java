@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.assertEquals;
 
 @Listeners(TestListener.class)
@@ -294,6 +295,30 @@ public class Testing extends BaseTest {
         //hover on the left element
         hp.hoverAnElementNeeded(ActionsTest.hoverLeftXpath);
         hp.clickElement(ActionsTest.leftLinkXpath);
+
+        //hover on the center element
+        hp.hoverAnElementNeeded(ActionsTest.hoverCenterXpath);
+        hp.clickElement(ActionsTest.centerLinkXpath);
+
+        //hover on the right element to click the first link
+        hp.hoverAnElementNeeded(ActionsTest.hoverRightXpath);
+        //get links list
+        List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
+                ActionsTest.rightLinksListXpath, 2);
+        abc.get(0).click();
+
+        //hover on the right element to click the second link
+        hp.hoverAnElementNeeded(ActionsTest.hoverRightXpath);
+        //get links list
+        abc.get(1).click();
+
+        //click and hold action
+        hp.clickAndHoldTest(ActionsTest.clickAndHoldXpath);
+        String text = hp.getTextFromElement(ActionsTest.clickAndHoldXpath);
+        assertThat(text).contains("Well done!");
+
+
+
 
 
 

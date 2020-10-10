@@ -17,10 +17,8 @@ public class ActionsTest {
     public static final String centerLinkXpath = hoverCenterXpath + descendantXpath;
 
     public static final String hoverRightXpath = "//*[@style='float:right;']";
-    public static final String rightLinkXpath1 = hoverRightXpath + descendantXpath + "[" + 1 + "]";
-    public static final String rightLinkXpath2 = hoverRightXpath + descendantXpath + "[" + 2 + "]";
+    public static final String rightLinksListXpath = hoverRightXpath + descendantXpath;
 
     public static final String clickAndHoldXpath = "//*[@id='click-box']";
-
 
 }

@@ -274,6 +274,16 @@ public class Helper {
 
     }
 
+    public void clickAndHoldTest (String xPath) {
+
+        WebElement doubleClick = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
+
+        actions.clickAndHold(doubleClick)
+                .pause(2000)
+                .build()
+                .perform();
+    }
+
 
 
     public void hoverAnElementNeeded (String xPath) {
