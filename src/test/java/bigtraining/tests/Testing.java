@@ -4,7 +4,6 @@ import bigtraining.components.Menu;
 import bigtraining.listeners.TestListener;
 import bigtraining.pages.*;
 import dataprovider.ContactUsDataProvider;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -96,8 +95,6 @@ public class Testing extends BaseTest {
      @Test
     public void javaScriptClickTest() {
 
-         JavascriptExecutor js = (JavascriptExecutor) driver;
-
          String passText = "It’s that Easy!! Well I think it is.....";
          String passTextXpath = "//*[@id='myModalJSClick']//h4";
 
@@ -107,7 +104,7 @@ public class Testing extends BaseTest {
          //switch to the next tab
          hp.switchToTab(ButtonClick.tabName);
 
-         js.executeScript("document.querySelector('#button2').click();");
+         jsExecutor.clickOnElement("#button2");
 
          //assert a success window message
          assertEquals(passText, hp.getTextFromElement(passTextXpath));
@@ -317,12 +314,24 @@ public class Testing extends BaseTest {
         String text = hp.getTextFromElement(ActionsTest.clickAndHoldXpath);
         assertThat(text).contains("Well done!");
 
-
-
-
-
-
         hp.sleep(2000);
+
+    }
+
+    @Test
+    public void scrollTest () throws InterruptedException {
+
+        hp.openPageNeeded(Menu.scrolling_Xpath, Scrolling.tabName);
+
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+////        jsExec.executeScript("document.getElementById('zone4').scrollTop += 100");
+//        js.executeScript("document.getElementById('zone4').scroll(50, 50)");
+        jsExecutor.clickOnElement("#zone4");
+
+
+
+
+//        hp.sleep(2000);
 
     }
 

@@ -92,6 +92,17 @@ public class Helper {
         return null;
     }
 
+    public void openPageNeeded (String menuClickXpath, String switchToTabXpath) {
+
+        //click to element on Menu Page
+        clickElement(menuClickXpath);
+
+        //switch to the next tab
+        switchToTab(switchToTabXpath);
+
+    }
+
+
     public boolean switchToTab(String tabName){
 
 //        log.debug("Switch to {} tab",tabName);
@@ -142,6 +153,13 @@ public class Helper {
 
         }
 
+
+    }
+
+    public void scrollBarElementActivate(String elementXpath) {
+
+        WebElement slider = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elementXpath)));
+        slider.sendKeys(Keys.END);
 
     }
 
@@ -313,10 +331,7 @@ public class Helper {
 
         wait.until(ExpectedConditions.attributeContains(By.xpath(xpath), attribute, value));
 
-
     }
-
-
 
 
     public void setValue (String xpath, String val) {

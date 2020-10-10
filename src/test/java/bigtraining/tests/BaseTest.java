@@ -1,6 +1,7 @@
 package bigtraining.tests;
 
 import bigtraining.components.Helper;
+import bigtraining.components.JSExecutor;
 import bigtraining.listeners.WebDriverListener;
 import bigtraining.pages.ContactUs;
 import bigtraining.pages.DropD_CheckB_RadioB;
@@ -26,12 +27,16 @@ public class BaseTest {
     protected WebDriverWait wait;
 
     protected Helper hp;
+    protected JSExecutor jsExecutor;
+
     protected ContactUs cu;
     protected ToDoList tdl;
     protected DropD_CheckB_RadioB dcr;
 
 
     protected final String url = "http://webdriveruniversity.com/index.html";
+//    protected final String url = "https://www.youtube.com/";
+
 
 
     @BeforeClass
@@ -41,6 +46,7 @@ public class BaseTest {
         BasicConfigurator.configure();
 
         hp = new Helper(driver, wait);
+        jsExecutor = new JSExecutor(driver, wait);
         cu = new ContactUs(driver, wait);
         tdl = new ToDoList(driver, wait);
         dcr = new DropD_CheckB_RadioB(wait);
