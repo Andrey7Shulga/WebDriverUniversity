@@ -273,7 +273,7 @@ public class Testing extends BaseTest {
     }
 
     @Test
-    public void actions () {
+    public void actions () throws InterruptedException {
 
         //click to get the 'ACTIONS' Page
         hp.clickElement(Menu.actions_Xpath);
@@ -292,10 +292,12 @@ public class Testing extends BaseTest {
         //hover on the left element
         hp.hoverAnElementNeeded(ActionsTest.hoverLeftXpath);
         hp.clickElement(ActionsTest.leftLinkXpath);
+        hp.alertAccept();
 
         //hover on the center element
         hp.hoverAnElementNeeded(ActionsTest.hoverCenterXpath);
         hp.clickElement(ActionsTest.centerLinkXpath);
+        hp.alertAccept();
 
         //hover on the right element to click the first link
         hp.hoverAnElementNeeded(ActionsTest.hoverRightXpath);
@@ -303,11 +305,13 @@ public class Testing extends BaseTest {
         List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
                 ActionsTest.rightLinksListXpath, 2);
         abc.get(0).click();
+        hp.alertAccept();
 
         //hover on the right element to click the second link
         hp.hoverAnElementNeeded(ActionsTest.hoverRightXpath);
         //get links list
         abc.get(1).click();
+        hp.alertAccept();
 
         //click and hold action
         hp.clickAndHoldTest(ActionsTest.clickAndHoldXpath);
@@ -319,19 +323,26 @@ public class Testing extends BaseTest {
     }
 
     @Test
-    public void scrollTest () throws InterruptedException {
+    public void closePopupsAndAlerts () throws InterruptedException {
 
-        hp.openPageNeeded(Menu.scrolling_Xpath, Scrolling.tabName);
+        hp.openPageNeeded(Menu.popUpAlerts_Xpath, PopUpAlerts.tabName);
 
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-////        jsExec.executeScript("document.getElementById('zone4').scrollTop += 100");
-//        js.executeScript("document.getElementById('zone4').scroll(50, 50)");
-        jsExecutor.clickOnElement("#zone4");
+        hp.clickElement(PopUpAlerts.javaScriptAlertButton);
+        hp.alertAccept();
 
+        hp.clickElement(PopUpAlerts.modalPopupButton);
+        hp.clickElement(PopUpAlerts.modalAlertClose);
 
+        hp.clickElement(PopUpAlerts.javaScriptConfBoxButton);
+        hp.alertDismiss();
+        String message = hp.getTextFromElement(PopUpAlerts.javaScriptConfBoxMessage);
+        assertThat(message).isEqualTo("You pressed Cancel!");
 
+        hp.clickElement(PopUpAlerts.ajaxLoaderButton);
+        hp.clickElement(PopUpAlerts.ajaxAnswerButton);
+        hp.clickElement(PopUpAlerts.modalAlertClose);
 
-//        hp.sleep(2000);
+        hp.sleep(2000);
 
     }
 

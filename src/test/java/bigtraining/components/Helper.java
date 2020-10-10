@@ -349,9 +349,9 @@ public class Helper {
 
     }
 
-    public void waitUntilElementIsPresented (String xPath, String elementValue) {
+    public void waitUntilElementIsPresented (String elementXpath, String elementText) {
 
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(xPath), elementValue));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(elementXpath), elementText));
 
     }
 
@@ -363,6 +363,18 @@ public class Helper {
             e.printStackTrace();
         }
 
+    }
+
+    public void alertAccept() throws InterruptedException {
+        Thread.sleep(1000);
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
+    public void alertDismiss() throws InterruptedException {
+        Thread.sleep(1000);
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
     }
 
 
