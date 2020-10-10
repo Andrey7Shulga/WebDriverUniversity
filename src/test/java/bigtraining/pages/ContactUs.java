@@ -1,6 +1,5 @@
 package bigtraining.pages;
 
-import bigtraining.components.Helper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,6 +28,8 @@ public class ContactUs {
     public static final String resetButtonXpath = "//*[@type='reset']";
     public static final String submitButtonXpath = "//*[@type='submit']";
     public static final String validMessageXpath = "//div[@id='contact_reply']/h1";
+    public static final String validMessage = "Thank You for your Message!";
+
 
 
     public ContactUs(WebDriver driver, WebDriverWait wait) {
