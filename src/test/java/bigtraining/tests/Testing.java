@@ -5,6 +5,7 @@ import bigtraining.listeners.TestListener;
 import bigtraining.pages.*;
 import dataprovider.ContactUsDataProvider;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -368,16 +369,25 @@ public class Testing extends BaseTest {
         }
 
         //get a day needed
+        List<WebElement> weeksList = hp.collectWebElementsListAndCheckSize(DatePicker.weeksList_Xpath, 6);
 
+        List<WebElement> daysList = hp.collectWebElementsList(
+                DatePicker.weeksList_Xpath + "[" + 3 + "]" + DatePicker.daysList_Xpath_append);
 
+        for (WebElement myDay : daysList) {
 
+            System.out.println(myDay.getText());
 
+            if (myDay.getText().equals(day)) {
+                myDay.click();
+                hp.clickElement(DatePicker.mainField_Xpath);
+                hp.sleep(2000);
+                wait.until(ExpectedConditions.attributeContains(myDay, "class", "active day"));
+//                assertThat(myDay.getAttribute("class")).isEqualTo("active day");
+                break;
+            }
 
-
-
-
-
-        hp.sleep(2000);
+        }
 
 
     }

@@ -8,6 +8,7 @@ public class DatePicker {
 
     public static final String tabName = "WebDriver | Datepicker";
 
+    public static final String mainField_Xpath = "//input";
     public static final String dateArea_Xpath = "//*[@id='datepicker']";
     public static final String pickButton_Xpath = dateArea_Xpath + "//i";
     public static final String dropDownMenu_Xpath = "//*[@style='display: block;']";
