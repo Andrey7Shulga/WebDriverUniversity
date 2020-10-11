@@ -183,10 +183,18 @@ public class Helper {
 
     public List<WebElement> collectWebElementsListAndCheckSize (String xPath, int size) {
 
-        List<WebElement> containerList = driver.findElements(By.xpath(xPath));
+//        List<WebElement> containerList = driver.findElements(By.xpath(xPath));
+        List<WebElement> containerList = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xPath)));
+
         assertEquals(size, containerList.size());
 
         return containerList;
+
+    }
+
+    public List<WebElement> collectWebElementsList (String xPath) {
+
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xPath)));
 
     }
 

@@ -312,6 +312,67 @@ public class Testing extends BaseTest {
     }
 
     @Test
+    public void datePicker() {
+
+        String year = "1955";
+        String month = "Oct";
+        String day = "19";
+
+        hp.openPageNeeded(Menu.datePicker_Xpath, DatePicker.tabName);
+
+        hp.clickElement(DatePicker.pickButton_Xpath);
+        hp.clickElement(DatePicker.datePickerSwitch_Xpath);
+
+        //extract from menu the current year chosen
+        String currentYear = hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath);
+
+        //get a year needed
+        //parse String to int
+        int int_year = Integer.parseInt(year);
+        int int_currentYear = Integer.parseInt(currentYear);
+
+            if (int_currentYear > int_year) {
+
+                while (int_currentYear != int_year) {
+
+                    //press the 'previous' button
+                    hp.clickElement(DatePicker.prevButton_Xpath);
+                    currentYear = hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath);
+                    int_currentYear = Integer.parseInt(currentYear);
+
+                }
+
+            } else if (int_currentYear < int_year) {
+
+                while (int_currentYear != int_year) {
+
+                    //press the 'next' button
+                    hp.clickElement(DatePicker.nextButton_Xpath);
+                    currentYear = hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath);
+                    int_currentYear = Integer.parseInt(currentYear);
+
+                }
+
+            }
+
+        //get a month needed
+
+
+
+
+
+
+
+        hp.sleep(2000);
+
+
+    }
+
+
+
+
+
+    @Test
     public void scroll() {
 
 
