@@ -15,6 +15,7 @@ public class Menu {
     public static final String actions_Xpath = "//h1[contains(text(), 'ACTIONS')]";
     public static final String scrolling_Xpath = "//h1[contains(text(), 'SCROLLING AROUND')]";
     public static final String popUpAlerts_Xpath = "//h1[(text()='POPUP & ALERTS')]";
+    public static final String appearDisappearText_Xpath = "//h1[(text()='ACCORDION & TEXT AFFECTS (APPEAR & DISAPPEAR)')]";
 
 
 

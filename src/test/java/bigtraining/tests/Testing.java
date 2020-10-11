@@ -283,5 +283,31 @@ public class Testing extends BaseTest {
 
     }
 
+    @Test
+    public void appearDisappearText() {
+
+        hp.openPageNeeded(Menu.appearDisappearText_Xpath, AccordionTextAffects.tabName);
+
+        hp.clickElement(AccordionTextAffects.manualTesting_Xpath);
+        hp.waitUntilElementIsPresented("//body", AccordionTextAffects.manualTesting_Text);
+        hp.clickElement(AccordionTextAffects.manualTesting_Xpath);
+
+        hp.clickElement(AccordionTextAffects.cucumberBDD_Xpath);
+        hp.waitUntilElementIsPresented("//body", AccordionTextAffects.cucumberBDD_Text);
+        hp.clickElement(AccordionTextAffects.cucumberBDD_Xpath);
+
+        hp.clickElement(AccordionTextAffects.automationTesting_Xpath);
+        hp.waitUntilElementIsPresented("//body", AccordionTextAffects.automationTesting_Text);
+        hp.clickElement(AccordionTextAffects.automationTesting_Xpath);
+
+        //wait for proper loading
+        hp.clickElement(AccordionTextAffects.keepClicking_Xpath);
+        hp.waitUntilElementIsPresented(AccordionTextAffects.hiddenTextArea_Xpath, AccordionTextAffects.textForWaiting);
+        hp.clickElement(AccordionTextAffects.keepClicking_Xpath);
+        hp.waitUntilElementIsPresented("//body", AccordionTextAffects.keepClicking_Text);
+
+
+    }
+
 
 }
