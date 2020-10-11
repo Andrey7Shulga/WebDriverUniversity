@@ -65,42 +65,29 @@ public class Testing extends BaseTest {
 
 
      @Test
-     public void webElementClickTest () {
+     public void buttonsClickTest () {
 
          //click to get the 'BUTTON CLICKS' Page
          hp.openPageNeeded(Menu.button_clicks_usXpath, ButtonClick.tabName);
 
-         //click the WebElement button
-         hp.clickElement(ButtonClick.webElementClickButton_Xpath);
-
-         //assert a success window message
-         assertEquals(ButtonClick.webPassText, hp.getTextFromElement(ButtonClick.webPassTextXpath));
-
-     }
-
-     @Test
-    public void javaScriptClickTest() {
-
-         hp.openPageNeeded(Menu.button_clicks_usXpath, ButtonClick.tabName);
-
-         jsExecutor.clickOnElement("#button2");
-
-         //assert a success window message
-         assertEquals(ButtonClick.jsPassText, hp.getTextFromElement(ButtonClick.jsPassTextXpath));
-
-     }
-
-     @Test
-    public void actionMoveClickTest() {
-
-         //click to get the 'BUTTON CLICKS' Page
-         hp.openPageNeeded(Menu.button_clicks_usXpath, ButtonClick.tabName);
-
-         //getting MoveAndClick action
+         //getting MoveAndClick action asserting a success window message and close the popup window
          hp.actionMoveAndClickElement(ButtonClick.ActionMoveClickButton_Xpath);
-
-         //assert a success window message
          assertEquals(ButtonClick.passText, hp.getTextFromElement(ButtonClick.passTextXpath));
+         hp.sleep(1000);
+         hp.clickElement(ButtonClick.CloseButton);
+
+         //click the WebElement button asserting a success window message and close the popup window
+         hp.clickElement(ButtonClick.webElementClickButton_Xpath);
+         assertEquals(ButtonClick.webPassText, hp.getTextFromElement(ButtonClick.webPassTextXpath));
+         hp.sleep(1000);
+         hp.clickElement(ButtonClick.webCloseButton);
+
+         //javascript click asserting a success window message and close the popup window
+         jsExecutor.clickOnElement("#button2");
+         assertEquals(ButtonClick.jsPassText, hp.getTextFromElement(ButtonClick.jsPassTextXpath));
+         hp.sleep(1000);
+         hp.clickElement(ButtonClick.jsCloseButton);
+
 
      }
 
