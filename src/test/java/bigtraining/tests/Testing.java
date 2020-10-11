@@ -314,7 +314,7 @@ public class Testing extends BaseTest {
     @Test
     public void datePicker() {
 
-        String year = "1955";
+        String year = "1974";
         String month = "Oct";
         String day = "19";
 
@@ -356,6 +356,20 @@ public class Testing extends BaseTest {
             }
 
         //get a month needed
+        List<WebElement> monthList = hp.collectWebElementsListAndCheckSize(DatePicker.monthList_Xpath, 12);
+
+        for (WebElement web : monthList) {
+
+            if (web.getText().equals(month)) {
+                web.click();
+                break;
+            }
+
+        }
+
+        //get a day needed
+
+
 
 
 

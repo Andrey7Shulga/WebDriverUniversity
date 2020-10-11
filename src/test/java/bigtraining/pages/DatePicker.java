@@ -14,6 +14,7 @@ public class DatePicker {
     public static final String datePickerSwitch_Xpath = dropDownMenu_Xpath + "//th[@class='datepicker-switch']";
     public static final String yearsList_Xpath = dropDownMenu_Xpath + "//span[contains(@class, 'year')]";
     public static final String monthList_Xpath = dropDownMenu_Xpath + "//span[contains(@class, 'month')]";
+
     public static final String weeksList_Xpath = dropDownMenu_Xpath + "//tbody/tr";
 
     //day xPath consist of 'weeks' root with index - //tbody/tr[i]
