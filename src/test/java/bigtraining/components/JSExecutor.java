@@ -9,15 +9,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class JSExecutor {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
-    private JavascriptExecutor js;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
+    private final JavascriptExecutor js;
+    private final Helper hp;
 
     public JSExecutor (WebDriver driver, WebDriverWait wait) {
 
         this.driver = driver;
         this.wait = wait;
         this.js = (JavascriptExecutor) driver;
+        hp = new Helper();
     }
 
 
@@ -49,13 +51,14 @@ public class JSExecutor {
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 
-    public void scrollDynamicallyForLoadingPage_loop() throws InterruptedException {
+    public void scrollDynamicallyForLoadingPage_loop() {
 
         long initialHeight = ((Number)js.executeScript("return document.body.scrollHeight")).longValue();
 
         while(true) {
             js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-            Thread.sleep(3000);
+            hp.sleep(2000);
+
             long currentHeight = ((Number)js.executeScript("return document.body.scrollHeight")).longValue();
             if (currentHeight == initialHeight) {
                 break;

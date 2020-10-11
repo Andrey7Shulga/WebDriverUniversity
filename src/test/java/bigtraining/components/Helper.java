@@ -365,14 +365,14 @@ public class Helper {
 
     }
 
-    public void alertAccept() throws InterruptedException {
-        Thread.sleep(1000);
+    public void alertAccept() {
+        sleep(1000);
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
 
-    public void alertDismiss() throws InterruptedException {
-        Thread.sleep(1000);
+    public void alertDismiss() {
+        sleep(1000);
         Alert alert = driver.switchTo().alert();
         alert.dismiss();
     }

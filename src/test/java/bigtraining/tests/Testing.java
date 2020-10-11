@@ -214,7 +214,7 @@ public class Testing extends BaseTest {
     }
 
     @Test
-    public void actions () throws InterruptedException {
+    public void actions () {
 
         hp.openPageNeeded(Menu.actions_Xpath, ActionsTest.tabName);
 
@@ -260,7 +260,7 @@ public class Testing extends BaseTest {
     }
 
     @Test
-    public void closePopupsAndAlerts () throws InterruptedException {
+    public void closePopupsAndAlerts () {
 
         hp.openPageNeeded(Menu.popUpAlerts_Xpath, PopUpAlerts.tabName);
 
@@ -306,6 +306,16 @@ public class Testing extends BaseTest {
         hp.clickElement(AccordionTextAffects.keepClicking_Xpath);
         hp.waitUntilElementIsPresented("//body", AccordionTextAffects.keepClicking_Text);
 
+        hp.sleep(2000);
+
+
+    }
+
+    @Test
+    public void scroll () {
+
+        jsExecutor.scrollDynamicallyForLoadingPage_loop();
+        hp.sleep(2000);
 
     }
 
