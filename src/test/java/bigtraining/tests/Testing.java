@@ -312,10 +312,10 @@ public class Testing extends BaseTest {
     }
 
     @Test
-    public void scroll () {
+    public void scroll() {
 
-        jsExecutor.scrollDynamicallyForLoadingPage_loop();
-        hp.sleep(2000);
+
+
 
     }
 

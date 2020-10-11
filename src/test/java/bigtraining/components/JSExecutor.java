@@ -69,6 +69,27 @@ public class JSExecutor {
         System.out.println("Height is: " + initialHeight);
     }
 
+
+    public void testScrollDynamic() {
+
+        Object lastHeight = js.executeScript("return document.body.scrollHeight");
+
+        while (true) {
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            hp.sleep(3000);
+
+            Object newHeight = js.executeScript("return document.body.scrollHeight");
+            if (newHeight == lastHeight) {
+                break;
+            }
+            lastHeight = newHeight;
+        }
+        System.out.println("Height is: " + lastHeight.toString());
+
+    }
+
+
+
     public void clickOnElement (String ccsPath) {
 
         js.executeScript("document.querySelector('" + ccsPath + "').click();");

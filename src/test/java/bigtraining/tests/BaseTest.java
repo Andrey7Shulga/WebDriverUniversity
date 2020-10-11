@@ -72,7 +72,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
-        wait = new WebDriverWait(driver, 15);
+        wait = new WebDriverWait(driver, 12);
 
         //WebListener setup
         EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
