@@ -314,11 +314,6 @@ public class Testing extends BaseTest {
     @Test
     public void datePicker() {
 
-        String year = "1974";
-        String month = "Oct";
-        String month_digital = "10";
-        String day = "19";
-
         hp.openPageNeeded(Menu.datePicker_Xpath, DatePicker.tabName);
 
         hp.clickElement(DatePicker.pickButton_Xpath);
@@ -329,7 +324,7 @@ public class Testing extends BaseTest {
 
         //get a year needed
         //parse String to int
-        int int_year = Integer.parseInt(year);
+        int int_year = Integer.parseInt(DatePicker.year);
         int int_currentYear = Integer.parseInt(currentYear);
 
             if (int_currentYear > int_year) {
@@ -357,40 +352,20 @@ public class Testing extends BaseTest {
             }
 
         //get a month needed
-        List<WebElement> monthList = hp.collectWebElementsListAndCheckSize(DatePicker.monthList_Xpath, 12);
-
-        for (WebElement web : monthList) {
-
-            if (web.getText().equals(month)) {
-                web.click();
-                break;
-            }
-
-        }
+        hp.clickElementFromList(DatePicker.monthList_Xpath, DatePicker.month);
 
         //get a day needed
-        List<WebElement> weeksList = hp.collectWebElementsListAndCheckSize(DatePicker.weeksList_Xpath, 6);
-
-        List<WebElement> daysList = hp.collectWebElementsList(
-                DatePicker.weeksList_Xpath + "[" + 3 + "]" + DatePicker.daysList_Xpath_append);
-
-        for (WebElement myDay : daysList) {
-
-            if (myDay.getText().equals(day)) {
-                myDay.click();
-                break;
-            }
-
-        }
+        //collect a dayList without classes 'old day' and 'new day' and click the day needed
+        hp.clickElementFromList(DatePicker.daysListFromActiveMonth_Xpath, DatePicker.day);
 
         //assert the day needed is chosen
         hp.clickElement(DatePicker.mainField_Xpath);
-        assertThat(hp.getTextFromElement(DatePicker.dayPicked_Xpath)).isEqualTo(day);
+        assertThat(hp.getTextFromElement(DatePicker.dayPicked_Xpath)).isEqualTo(DatePicker.day);
 
         //assert the month and the year needed are chosen
         assertThat(hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath))
-                .contains(year)
-                .contains(month);
+                .contains(DatePicker.year)
+                .contains(DatePicker.month);
 
         hp.sleep(2000);
 

@@ -261,6 +261,22 @@ public class Helper {
 
     }
 
+    public void clickElementFromList (String elementsListXpath, String elementText) {
+
+        List<WebElement> daysList = collectWebElementsList(elementsListXpath);
+
+        for (WebElement myDay : daysList) {
+
+            if (myDay.getText().equals(elementText)) {
+                myDay.click();
+                break;
+            }
+
+        }
+
+
+    }
+
 
 
     /**
