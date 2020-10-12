@@ -32,6 +32,8 @@ public class BaseTest {
     protected ContactUs cu;
     protected ToDoList tdl;
     protected DropD_CheckB_RadioB dcr;
+    protected DatePicker dp;
+
 
 
     protected final String url = "http://webdriveruniversity.com/index.html";
@@ -50,6 +52,7 @@ public class BaseTest {
         cu = new ContactUs(driver, wait);
         tdl = new ToDoList(driver, wait);
         dcr = new DropD_CheckB_RadioB(wait);
+        dp = new DatePicker(driver, wait);
 
     }
 

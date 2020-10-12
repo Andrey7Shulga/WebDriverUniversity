@@ -319,37 +319,7 @@ public class Testing extends BaseTest {
         hp.clickElement(DatePicker.pickButton_Xpath);
         hp.clickElement(DatePicker.datePickerSwitch_Xpath);
 
-        //extract from menu the current year chosen
-        String currentYear = hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath);
-
-        //get a year needed
-        //parse String to int
-        int int_year = Integer.parseInt(DatePicker.year);
-        int int_currentYear = Integer.parseInt(currentYear);
-
-            if (int_currentYear > int_year) {
-
-                while (int_currentYear != int_year) {
-
-                    //press the 'previous' button
-                    hp.clickElement(DatePicker.prevButton_Xpath);
-                    currentYear = hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath);
-                    int_currentYear = Integer.parseInt(currentYear);
-
-                }
-
-            } else if (int_currentYear < int_year) {
-
-                while (int_currentYear != int_year) {
-
-                    //press the 'next' button
-                    hp.clickElement(DatePicker.nextButton_Xpath);
-                    currentYear = hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath);
-                    int_currentYear = Integer.parseInt(currentYear);
-
-                }
-
-            }
+        dp.chooseYear();
 
         //get a month needed
         hp.clickElementFromList(DatePicker.monthList_Xpath, DatePicker.month);

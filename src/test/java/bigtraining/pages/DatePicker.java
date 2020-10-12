@@ -1,6 +1,16 @@
 package bigtraining.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 public class DatePicker {
+
+    private WebDriver driver;
+    private WebDriverWait wait;
+    private WebElement element;
 
     public static final String tabName = "WebDriver | Datepicker";
     public static final String year = "2074";
@@ -22,43 +32,67 @@ public class DatePicker {
     public static final String nextButton_Xpath = dropDownMenu_Xpath + "//th[@class='next']";
 
 
-//    public void chooseYear () {
-//
-//        //extract from menu the current year chosen
-//        String currentYear = hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath);
-//
-//        //get a year needed
-//        //parse String to int
-//        int int_year = Integer.parseInt(year);
-//        int int_currentYear = Integer.parseInt(currentYear);
-//
-//        if (int_currentYear > int_year) {
-//
-//            while (int_currentYear != int_year) {
-//
-//                //press the 'previous' button
-//                hp.clickElement(DatePicker.prevButton_Xpath);
-//                currentYear = hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath);
-//                int_currentYear = Integer.parseInt(currentYear);
-//
-//            }
-//
-//        } else if (int_currentYear < int_year) {
-//
-//            while (int_currentYear != int_year) {
-//
-//                //press the 'next' button
-//                hp.clickElement(DatePicker.nextButton_Xpath);
-//                currentYear = hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath);
-//                int_currentYear = Integer.parseInt(currentYear);
-//
-//            }
-//
-//        }
-//
-//
-//
-//    }
+
+    public DatePicker (WebDriver driver, WebDriverWait wait) {
+
+        this.driver = driver;
+        this.wait = wait;
+
+    }
+
+
+    public void chooseYear () {
+
+        //extract from menu the current year chosen
+        String currentYear = getYearFromElement();
+
+        //get a year needed
+        //parse String to int
+        int int_year = Integer.parseInt(year);
+        int int_currentYear = Integer.parseInt(currentYear);
+
+        if (int_currentYear > int_year) {
+
+            while (int_currentYear != int_year) {
+
+                //press the 'previous' button
+                clickElement(prevButton_Xpath);
+                currentYear = getYearFromElement();
+                int_currentYear = Integer.parseInt(currentYear);
+
+            }
+
+        } else if (int_currentYear < int_year) {
+
+            while (int_currentYear != int_year) {
+
+                //press the 'next' button
+                clickElement(nextButton_Xpath);
+
+                currentYear = getYearFromElement();
+                int_currentYear = Integer.parseInt(currentYear);
+
+            }
+
+        }
+
+    }
+
+    public String getYearFromElement () {
+
+        return wait.until(
+                ExpectedConditions.presenceOfElementLocated(By.xpath(datePickerSwitch_Xpath))).getText();
+
+    }
+
+    public void clickElement (String xpath) {
+
+        wait.until(ExpectedConditions
+                .presenceOfElementLocated(By.xpath(xpath))).click();
+
+    }
+
+
 
 
 }
