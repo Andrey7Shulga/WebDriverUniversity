@@ -4,8 +4,6 @@ import bigtraining.components.Helper;
 
 public class DatePicker {
 
-    Helper hp = new Helper();
-
     public static final String tabName = "WebDriver | Datepicker";
 
     public static final String mainField_Xpath = "//input";
@@ -18,8 +16,8 @@ public class DatePicker {
 
     public static final String weeksList_Xpath = dropDownMenu_Xpath + "//tbody/tr";
 
-    //day xPath consist of 'weeks' root with index - //tbody/tr[i]
     public static final String daysList_Xpath_append = "/td[@class='day']";
+    public static final String dayPicked_Xpath = "//*[@class='datepicker-days']//td[@class='active day']";
 
     public static final String prevButton_Xpath = dropDownMenu_Xpath + "//th[@class='prev']";
     public static final String nextButton_Xpath = dropDownMenu_Xpath + "//th[@class='next']";

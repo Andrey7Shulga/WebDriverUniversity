@@ -5,7 +5,6 @@ import bigtraining.listeners.TestListener;
 import bigtraining.pages.*;
 import dataprovider.ContactUsDataProvider;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -317,6 +316,7 @@ public class Testing extends BaseTest {
 
         String year = "1974";
         String month = "Oct";
+        String month_digital = "10";
         String day = "19";
 
         hp.openPageNeeded(Menu.datePicker_Xpath, DatePicker.tabName);
@@ -376,19 +376,23 @@ public class Testing extends BaseTest {
 
         for (WebElement myDay : daysList) {
 
-            System.out.println(myDay.getText());
-
             if (myDay.getText().equals(day)) {
                 myDay.click();
-                hp.clickElement(DatePicker.mainField_Xpath);
-                hp.sleep(2000);
-                wait.until(ExpectedConditions.attributeContains(myDay, "class", "active day"));
-//                assertThat(myDay.getAttribute("class")).isEqualTo("active day");
                 break;
             }
 
         }
 
+        //assert the day needed is chosen
+        hp.clickElement(DatePicker.mainField_Xpath);
+        assertThat(hp.getTextFromElement(DatePicker.dayPicked_Xpath)).isEqualTo(day);
+
+        //assert the month and the year needed are chosen
+        assertThat(hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath))
+                .contains(year)
+                .contains(month);
+
+        hp.sleep(2000);
 
     }
 
