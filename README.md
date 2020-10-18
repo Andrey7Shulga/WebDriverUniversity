@@ -10,5 +10,7 @@ Blocks covered:
 - "Dropdown Menu(s), Checkboxe(s) & Radio Button(s)"
 - "ACTIONS" (dropAndDown, doubleClick, hover, clickAndHold)
 - "Annoying Popup & Alerts!" (popups and alerts handling)
+- "ACCORDION & TEXT AFFECTS (APPEAR & DISAPPEAR)"
+- "DATEPICKER"
 
 
