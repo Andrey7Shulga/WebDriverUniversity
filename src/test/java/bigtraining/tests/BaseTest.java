@@ -3,10 +3,7 @@ package bigtraining.tests;
 import bigtraining.components.Helper;
 import bigtraining.components.JSExecutor;
 import bigtraining.listeners.WebDriverListener;
-import bigtraining.pages.ContactUs;
-import bigtraining.pages.DatePicker;
-import bigtraining.pages.DropD_CheckB_RadioB;
-import bigtraining.pages.ToDoList;
+import bigtraining.pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.BasicConfigurator;
 import org.openqa.selenium.WebDriver;
@@ -33,6 +30,8 @@ public class BaseTest {
     protected ToDoList tdl;
     protected DropD_CheckB_RadioB dcr;
     protected DatePicker dp;
+    protected AccordionTextAffects ata;
+
 
 
 
@@ -53,6 +52,7 @@ public class BaseTest {
         tdl = new ToDoList(driver, wait);
         dcr = new DropD_CheckB_RadioB(wait);
         dp = new DatePicker(driver, wait);
+        ata = new AccordionTextAffects(driver, wait);
 
     }
 

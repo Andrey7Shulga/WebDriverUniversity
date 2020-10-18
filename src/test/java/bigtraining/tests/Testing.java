@@ -288,26 +288,28 @@ public class Testing extends BaseTest {
 
         hp.openPageNeeded(Menu.appearDisappearText_Xpath, AccordionTextAffects.tabName);
 
-        hp.clickElement(AccordionTextAffects.manualTesting_Xpath);
-        hp.waitUntilElementIsPresented("//body", AccordionTextAffects.manualTesting_Text);
-        hp.clickElement(AccordionTextAffects.manualTesting_Xpath);
+        ata.clickAndWait(
+                AccordionTextAffects.manualTesting_Xpath,
+                AccordionTextAffects.manualTesting_Text,
+                1000);
 
-        hp.clickElement(AccordionTextAffects.cucumberBDD_Xpath);
-        hp.waitUntilElementIsPresented("//body", AccordionTextAffects.cucumberBDD_Text);
-        hp.clickElement(AccordionTextAffects.cucumberBDD_Xpath);
+        ata.clickAndWait(
+                AccordionTextAffects.cucumberBDD_Xpath,
+                AccordionTextAffects.cucumberBDD_Text,
+                1000);
 
-        hp.clickElement(AccordionTextAffects.automationTesting_Xpath);
-        hp.waitUntilElementIsPresented("//body", AccordionTextAffects.automationTesting_Text);
-        hp.clickElement(AccordionTextAffects.automationTesting_Xpath);
+        ata.clickAndWait(
+                AccordionTextAffects.automationTesting_Xpath,
+                AccordionTextAffects.automationTesting_Text,
+                1000);
 
         //wait for proper loading
-        hp.clickElement(AccordionTextAffects.keepClicking_Xpath);
         hp.waitUntilElementIsPresented(AccordionTextAffects.hiddenTextArea_Xpath, AccordionTextAffects.textForWaiting);
-        hp.clickElement(AccordionTextAffects.keepClicking_Xpath);
-        hp.waitUntilElementIsPresented("//body", AccordionTextAffects.keepClicking_Text);
 
-        hp.sleep(2000);
-
+        ata.clickAndWait(
+                AccordionTextAffects.keepClicking_Xpath,
+                AccordionTextAffects.keepClicking_Text,
+                1000);
 
     }
 
