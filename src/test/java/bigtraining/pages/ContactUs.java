@@ -24,7 +24,7 @@ public class ContactUs {
     private final String commentsValue = "Hello, World";
     private final String atribute = "value";
 
-    public static final String tabname = "WebDriver | Contact Us";
+    public static final String tabName = "WebDriver | Contact Us";
     public static final String resetButtonXpath = "//*[@type='reset']";
     public static final String submitButtonXpath = "//*[@type='submit']";
     public static final String validMessageXpath = "//div[@id='contact_reply']/h1";

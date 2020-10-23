@@ -20,7 +20,7 @@ public class Testing extends BaseTest {
     public void testContactUsPage () {
 
         //click to get the 'Contact Us' Page
-        hp.openPageNeeded(Menu.contact_usXpath, ContactUs.tabname);
+        hp.openPageNeeded(Menu.contact_usXpath, ContactUs.tabName);
 
         //type the data to the fields
         cu.typeData();
@@ -50,7 +50,7 @@ public class Testing extends BaseTest {
         driver.get(url);
 
         //click to get the 'Contact Us' Page
-        hp.openPageNeeded(Menu.contact_usXpath, ContactUs.tabname);
+        hp.openPageNeeded(Menu.contact_usXpath, ContactUs.tabName);
 
         //type data to be verified
         cu.typeDataProvider(fnameValue, lnameValue, emailValue, commentsValue);
@@ -368,6 +368,33 @@ public class Testing extends BaseTest {
         assertThat(hp.getTextFromAlert()).isEqualTo("Your file has now been uploaded!");
 
         hp.alertAccept();
+
+    }
+
+    @Test
+    public void autoComplete() {
+
+        hp.openPageNeeded(Menu.autoComplete_Xpath, AutocompleteTextfield.tabName);
+
+        hp.sendKeysToElement(AutocompleteTextfield.inputField_xPath, AutocompleteTextfield.letter);
+
+        List<WebElement> abc =
+        hp.collectWebElementsListAndCheckSize(AutocompleteTextfield.itemsList_xPath, 4);
+
+        for (WebElement k : abc) {
+            assertThat(k.getText()).isNotEqualTo(null);
+        }
+
+        for (int i = 1; i <= abc.size(); i++) {
+
+            String text = hp.getTextFromElement
+                    (AutocompleteTextfield.itemsList_xPath + "[" + i + "]" + "/strong");
+            assertThat(text).isEqualTo(AutocompleteTextfield.letter);
+
+        }
+
+
+
 
     }
 

@@ -18,6 +18,7 @@ public class Menu {
     public static final String appearDisappearText_Xpath = "//h1[(text()='ACCORDION & TEXT AFFECTS (APPEAR & DISAPPEAR)')]";
     public static final String datePicker_Xpath = "//h1[(text()='DATEPICKER')]";
     public static final String fileUpload_Xpath = "//h1[(text()='FILE UPLOAD')]";
+    public static final String autoComplete_Xpath = "//h1[(text()='AUTOCOMPLETE TEXTFIELD')]";
 
 
     public Menu(WebDriver driver, WebDriverWait wait) {
