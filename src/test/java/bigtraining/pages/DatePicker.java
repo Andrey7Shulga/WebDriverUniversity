@@ -13,9 +13,9 @@ public class DatePicker {
     private WebElement element;
 
     public static final String tabName = "WebDriver | Datepicker";
-    public static final String year = "1974";
-    public static final String month = "Oct";
-    public static final String day = "19";
+    public static final String year = "2047";
+    public static final String month = "Aug";
+    public static final String day = "30";
 
     public static final String mainField_Xpath = "//input";
     public static final String dateArea_Xpath = "//*[@id='datepicker']";

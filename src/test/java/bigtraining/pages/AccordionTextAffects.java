@@ -51,11 +51,6 @@ public class AccordionTextAffects {
 
         element.click();
 
-//        hp.clickElement(xPath);
-//        hp.waitUntilElementIsPresented("//body", xPath);
-//        hp.sleep(1000);
-//        hp.clickElement(xPath);
-
     }
 
 

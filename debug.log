@@ -614,3 +614,9 @@
 [0717/010314.263:ERROR:process_memory_win.cc(73)] ReadMemory at 0x7ffc600453c0 of 64 bytes failed: Запрос ReadProcessMemory или WriteProcessMemory был выполнен только частично. (0x12B)
 [0717/010314.271:ERROR:file_io_win.cc(161)] CreateFile C:\Users\BigBoss\AppData\Local\Temp\scoped_dir7788_1531023124\Crashpad\settings.dat: Не удается найти указанный файл. (0x2)
 [0717/010314.263:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Попытка доступа к процессу, выполняющему процедуру завершения. (0xc000010a)
+[1018/215016.155:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[1018/215016.157:ERROR:prune_crash_reports.cc(36)] PruneCrashReportDatabase: Failed to get pending reports
+[1018/220531.417:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[1018/220531.417:ERROR:prune_crash_reports.cc(36)] PruneCrashReportDatabase: Failed to get pending reports
+[1018/220632.833:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[1018/220632.833:ERROR:prune_crash_reports.cc(36)] PruneCrashReportDatabase: Failed to get pending reports

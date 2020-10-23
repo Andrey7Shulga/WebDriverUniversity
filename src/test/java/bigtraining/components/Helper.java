@@ -36,9 +36,9 @@ public class Helper {
     }
 
 
-    public void sendKeys(CharSequence... charSequences) {
-
-    }
+//    public void sendKeys(CharSequence... charSequences) {
+//
+//    }
 
     public void clear() {
 
@@ -163,6 +163,13 @@ public class Helper {
 
     }
 
+    public void sendKeysToElement(String elementXpath, String text) {
+
+        WebElement el = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elementXpath)));
+        el.sendKeys(text);
+
+    }
+
     public void checkWebElementsListForDisabledElement(List<WebElement> abc, int size, String disabledValue) {
 
         List<String> list = new ArrayList<String>();
@@ -246,19 +253,6 @@ public class Helper {
 
         element.click();
 
-//        try {
-//            element.click();
-//        } catch (UnhandledAlertException f) {
-//            try {
-//                Alert alert = driver.switchTo().alert();
-//                String alertText = alert.getText();
-//                System.out.println("Alert data: " + alertText);
-//                alert.accept();
-//            } catch (NoAlertPresentException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
     }
 
     public void clickElementFromList (String elementsListXpath, String elementText) {
@@ -315,6 +309,8 @@ public class Helper {
                 .perform();
 
     }
+
+
 
     public void clickAndHoldTest (String xPath) {
 
@@ -390,14 +386,25 @@ public class Helper {
     }
 
     public void alertAccept() {
-        sleep(1000);
-        Alert alert = driver.switchTo().alert();
+//        sleep(1000);
+//        Alert alert = driver.switchTo().alert();
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+
         alert.accept();
+
+    }
+
+    public String getTextFromAlert() {
+
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        return alert.getText();
     }
 
     public void alertDismiss() {
-        sleep(1000);
-        Alert alert = driver.switchTo().alert();
+//        sleep(1000);
+//        Alert alert = driver.switchTo().alert();
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+
         alert.dismiss();
     }
 

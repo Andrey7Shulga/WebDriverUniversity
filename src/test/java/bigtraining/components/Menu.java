@@ -17,8 +17,7 @@ public class Menu {
     public static final String popUpAlerts_Xpath = "//h1[(text()='POPUP & ALERTS')]";
     public static final String appearDisappearText_Xpath = "//h1[(text()='ACCORDION & TEXT AFFECTS (APPEAR & DISAPPEAR)')]";
     public static final String datePicker_Xpath = "//h1[(text()='DATEPICKER')]";
-
-
+    public static final String fileUpload_Xpath = "//h1[(text()='FILE UPLOAD')]";
 
 
     public Menu(WebDriver driver, WebDriverWait wait) {

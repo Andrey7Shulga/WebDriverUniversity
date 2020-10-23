@@ -339,7 +339,7 @@ public class Testing extends BaseTest {
                 .contains(DatePicker.year)
                 .contains(DatePicker.month);
 
-        hp.sleep(2000);
+        hp.sleep(3000);
 
     }
 
@@ -348,10 +348,18 @@ public class Testing extends BaseTest {
 
 
     @Test
-    public void scroll() {
+    public void fileUpload() {
 
+        hp.openPageNeeded(Menu.fileUpload_Xpath, FileUpload.tabName);
 
+        //send file path to the element with type 'file'
+        hp.sendKeysToElement(FileUpload.chooseButton, FileUpload.filePath);
 
+        hp.clickElement(FileUpload.submitButton);
+
+        assertThat(hp.getTextFromAlert()).isEqualTo("Your file has now been uploaded!");
+
+        hp.alertAccept();
 
     }
 
