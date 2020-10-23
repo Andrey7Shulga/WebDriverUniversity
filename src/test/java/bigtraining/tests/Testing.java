@@ -229,11 +229,15 @@ public class Testing extends BaseTest {
         //hover on the left element
         hp.hoverAnElementNeeded(ActionsTest.hoverLeftXpath);
         hp.clickElement(ActionsTest.leftLinkXpath);
+
+        assertThat(hp.getTextFromAlert()).isEqualTo(ActionsTest.alertMessage);
         hp.alertAccept();
 
         //hover on the center element
         hp.hoverAnElementNeeded(ActionsTest.hoverCenterXpath);
         hp.clickElement(ActionsTest.centerLinkXpath);
+
+        assertThat(hp.getTextFromAlert()).isEqualTo(ActionsTest.alertMessage);
         hp.alertAccept();
 
         //hover on the right element to click the first link
@@ -242,12 +246,16 @@ public class Testing extends BaseTest {
         List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
                 ActionsTest.rightLinksListXpath, 2);
         abc.get(0).click();
+
+        assertThat(hp.getTextFromAlert()).isEqualTo(ActionsTest.alertMessage);
         hp.alertAccept();
 
         //hover on the right element to click the second link
         hp.hoverAnElementNeeded(ActionsTest.hoverRightXpath);
         //get links list
         abc.get(1).click();
+
+        assertThat(hp.getTextFromAlert()).isEqualTo(ActionsTest.alertMessage);
         hp.alertAccept();
 
         //click and hold action

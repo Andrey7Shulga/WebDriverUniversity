@@ -386,10 +386,8 @@ public class Helper {
     }
 
     public void alertAccept() {
-//        sleep(1000);
-//        Alert alert = driver.switchTo().alert();
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
         alert.accept();
 
     }
@@ -401,10 +399,8 @@ public class Helper {
     }
 
     public void alertDismiss() {
-//        sleep(1000);
-//        Alert alert = driver.switchTo().alert();
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
         alert.dismiss();
     }
 

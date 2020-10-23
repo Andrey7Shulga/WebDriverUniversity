@@ -21,4 +21,6 @@ public class ActionsTest {
 
     public static final String clickAndHoldXpath = "//*[@id='click-box']";
 
+    public static final String alertMessage = "Well done you clicked on the link!";
+
 }
