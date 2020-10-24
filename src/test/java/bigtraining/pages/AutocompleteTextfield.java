@@ -12,8 +12,7 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class AutocompleteTextfield {
 
-    private WebDriverWait wait;
-
+    private final WebDriverWait wait;
 
     public static final String tabName = "WebDriver | Contact Us";
     public static final String inputField_xPath = "//*[@id='myInput']";
@@ -22,6 +21,7 @@ public class AutocompleteTextfield {
 
     public static final String letter = "L";
     public static final String itemToChoose = "Linguine";
+
 
     public AutocompleteTextfield (WebDriverWait wait) {
         this.wait = wait;
