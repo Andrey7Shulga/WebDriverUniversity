@@ -362,7 +362,7 @@ public class Helper {
 
     }
 
-    public void waitUntilElementIsAbsence (String xPath, String elementValue) {
+    public void waitUntilElementsValueIsAbsence (String xPath, String elementValue) {
 
         wait.until(ExpectedConditions.not(
                 ExpectedConditions.textToBePresentInElementLocated(By.xpath(xPath), elementValue)));
@@ -385,6 +385,17 @@ public class Helper {
 
     }
 
+    public void waitUntilElementIsNotVisible (String xpath) {
+
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(xpath)));
+
+    }
+
+
+    /**
+     * ALERTS
+     */
+
     public void alertAccept() {
 
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
@@ -403,6 +414,8 @@ public class Helper {
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
         alert.dismiss();
     }
+
+
 
 
 }

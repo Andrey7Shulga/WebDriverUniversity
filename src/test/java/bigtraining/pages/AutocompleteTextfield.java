@@ -8,6 +8,6 @@ public class AutocompleteTextfield {
     public static final String itemsList_xPath = "//*[@class='autocomplete-items']/div";
 
     public static final String letter = "L";
-
+    public static final String itemToChoose = "Linguine";
 
 }

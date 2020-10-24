@@ -106,7 +106,7 @@ public class Testing extends BaseTest {
 
         //delete an element
         hp.clickElement(ToDoList.elementDeleteButtonXpath);
-        hp.waitUntilElementIsAbsence(ToDoList.elementXpathToFindText, ToDoList.nameToDelete);
+        hp.waitUntilElementsValueIsAbsence(ToDoList.elementXpathToFindText, ToDoList.nameToDelete);
 
         //check a list of elements names
         tdl.checkContainerSizeAndGetNamesList(2);
@@ -376,8 +376,10 @@ public class Testing extends BaseTest {
 
         hp.openPageNeeded(Menu.autoComplete_Xpath, AutocompleteTextfield.tabName);
 
+        //send a letter into the input field
         hp.sendKeysToElement(AutocompleteTextfield.inputField_xPath, AutocompleteTextfield.letter);
 
+        //collect a list of elements value
         List<WebElement> abc =
         hp.collectWebElementsListAndCheckSize(AutocompleteTextfield.itemsList_xPath, 4);
 
@@ -391,10 +393,24 @@ public class Testing extends BaseTest {
                     (AutocompleteTextfield.itemsList_xPath + "[" + i + "]" + "/strong");
             assertThat(text).isEqualTo(AutocompleteTextfield.letter);
 
+            String value = hp.getTextFromAttribute(
+                    AutocompleteTextfield.itemsList_xPath + "[" + i + "]" + "/input", "value");
+
+            if (value.equals(AutocompleteTextfield.itemToChoose)) {
+
+                //choose an click the element needed
+                hp.clickElement(AutocompleteTextfield.itemsList_xPath + "[" + i + "]");
+                hp.waitUntilElementIsNotVisible(AutocompleteTextfield.itemsList_xPath);
+                hp.bodyGetTextToCompare(value);
+
+                //click the submit button
+                hp.clickElement(AutocompleteTextfield.submitButton_xPath);
+                assertThat(hp.bodyGetTextToCompare(value)).isFalse();
+                break;
+
+            }
+
         }
-
-
-
 
     }
 
