@@ -31,13 +31,14 @@ public class BaseTest {
     protected DropD_CheckB_RadioB dcr;
     protected DatePicker dp;
     protected AccordionTextAffects ata;
+    protected AutocompleteTextfield actf;
+
 
 
 
 
     protected final String url = "http://webdriveruniversity.com/index.html";
 //    protected final String url = "https://www.youtube.com/";
-
 
 
     @BeforeClass
@@ -53,6 +54,7 @@ public class BaseTest {
         dcr = new DropD_CheckB_RadioB(wait);
         dp = new DatePicker(driver, wait);
         ata = new AccordionTextAffects(driver, wait);
+        actf = new AutocompleteTextfield(wait);
 
     }
 
