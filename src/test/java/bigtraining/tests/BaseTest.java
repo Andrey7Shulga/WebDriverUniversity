@@ -11,10 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,24 +36,9 @@ public class BaseTest {
 
 
     @BeforeClass
-    public void setUP () {
-
+    public void beforeClass() {
         ///Log4J configuration
         BasicConfigurator.configure();
-
-        hp = new Helper(driver, wait);
-        jsExecutor = new JSExecutor(driver, wait);
-        cu = new ContactUs(driver, wait);
-        tdl = new ToDoList(driver, wait);
-        dcr = new DropD_CheckB_RadioB(wait);
-        dp = new DatePicker(driver, wait);
-        ata = new AccordionTextAffects(driver, wait);
-        actf = new AutocompleteTextfield(wait);
-
-    }
-
-    @BeforeTest
-    public void beforeTest() {
 
         //WebDriver setup
         WebDriverManager.chromedriver().setup();
@@ -64,13 +46,13 @@ public class BaseTest {
         //driver options
         ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setHeadless(true);
-//
-//        chromeOptions.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.DISMISS); //ignore and dismiss unexpected alert window
-//
-//        chromeOptions.setExperimentalOption(
-//        "excludeSwitches", Arrays.asList("disable-popup-blocking")); //close all the popup windows
-
 //        driver = new ChromeDriver(chromeOptions);
+
+    }
+
+    @BeforeMethod
+    public void beforeMethod() {
+
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -84,12 +66,22 @@ public class BaseTest {
 
         driver.get(url);
 
+        hp = new Helper(driver, wait);
+        jsExecutor = new JSExecutor(driver, wait);
+        cu = new ContactUs(driver, wait);
+        tdl = new ToDoList(driver, wait);
+        dcr = new DropD_CheckB_RadioB(wait);
+        dp = new DatePicker(driver, wait);
+        ata = new AccordionTextAffects(driver, wait);
+        actf = new AutocompleteTextfield(wait);
+
     }
 
-    @AfterTest
-    public void afterTest() {
+    @AfterMethod
+    public void afterMethod() {
 
         if(driver != null) {
+            driver.manage().deleteAllCookies();
             driver.quit();
         }
     }
@@ -99,7 +91,6 @@ public class BaseTest {
     public void afterClass () {
 
         if(driver != null) {
-            driver.manage().deleteAllCookies();
             driver.quit();
         }
     }
