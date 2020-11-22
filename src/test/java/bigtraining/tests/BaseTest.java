@@ -34,9 +34,6 @@ public class BaseTest {
     protected AutocompleteTextfield actf;
 
 
-
-
-
     protected final String url = "http://webdriveruniversity.com/index.html";
 //    protected final String url = "https://www.youtube.com/";
 

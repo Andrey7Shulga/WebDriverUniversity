@@ -198,7 +198,7 @@ public class Testing extends BaseTest {
     }
 
     @Test
-    public void dropDowmWithDisabledElement () {
+    public void dropDownWithDisabledElement () {
 
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
         hp.openPageNeeded(Menu.dropChechRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
@@ -352,15 +352,12 @@ public class Testing extends BaseTest {
     }
 
 
-
-
-
     @Test
     public void fileUpload() {
 
         hp.openPageNeeded(Menu.fileUpload_Xpath, FileUpload.tabName);
 
-        //send file path to the element with type 'file'
+        //send file path to an element with type 'file'
         hp.sendKeysToElement(FileUpload.chooseButton, FileUpload.filePath);
 
         hp.clickElement(FileUpload.submitButton);
