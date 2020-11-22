@@ -12,5 +12,7 @@ Blocks covered:
 - "Annoying Popup & Alerts!" (popups and alerts handling)
 - "ACCORDION & TEXT AFFECTS (APPEAR & DISAPPEAR)"
 - "DATEPICKER"
+- "FILE UPLOAD"
+- "AUTOCOMPLETE TEXTFIELD"
 
 
