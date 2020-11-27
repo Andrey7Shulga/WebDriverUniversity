@@ -47,7 +47,7 @@ public class Testing extends BaseTest {
     public void testContactUsDataProvider(String fnameValue, String lnameValue, String emailValue,
                                       String commentsValue, String message, String messageTwo) {
 
-        driver.get(url);
+//        driver.get(url);
 
         //click to get the 'Contact Us' Page
         hp.openPageNeeded(Menu.contact_usXpath, ContactUs.tabName);

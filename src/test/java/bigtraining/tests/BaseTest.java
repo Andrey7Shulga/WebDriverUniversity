@@ -8,10 +8,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.BasicConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,14 +39,12 @@ public class BaseTest {
 
     @BeforeClass
     public void beforeClass() {
-        ///Log4J configuration
-        BasicConfigurator.configure();
 
         //WebDriver setup
         WebDriverManager.chromedriver().setup();
 
         //driver options
-        ChromeOptions chromeOptions = new ChromeOptions();
+//        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setHeadless(true);
 //        driver = new ChromeDriver(chromeOptions);
 
@@ -53,18 +53,18 @@ public class BaseTest {
     @BeforeMethod
     public void beforeMethod() {
 
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        ///Log4J configuration
+        BasicConfigurator.configure();
 
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 12);
 
         //WebListener setup
         EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);
         eventFiringWebDriver.register(new WebDriverListener());
         driver = eventFiringWebDriver;
-
-        driver.get(url);
 
         hp = new Helper(driver, wait);
         jsExecutor = new JSExecutor(driver, wait);
@@ -74,6 +74,8 @@ public class BaseTest {
         dp = new DatePicker(driver, wait);
         ata = new AccordionTextAffects(driver, wait);
         actf = new AutocompleteTextfield(wait);
+
+        driver.get(url);
 
     }
 
