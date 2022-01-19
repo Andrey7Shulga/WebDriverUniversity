@@ -1,5 +1,6 @@
 package bigtraining.pages;
 
+import bigtraining.components.Helper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,9 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DatePicker {
 
-    private final WebDriver driver;
-    private final WebDriverWait wait;
-    private WebElement element;
+    private final Helper helper;
 
     public static final String tabName = "WebDriver | Datepicker";
     public static final String year = "2044";
@@ -34,15 +33,11 @@ public class DatePicker {
 
 
     public DatePicker (WebDriver driver, WebDriverWait wait) {
-
-        this.driver = driver;
-        this.wait = wait;
-
+        this.helper = new Helper(driver, wait);
     }
 
 
     public void chooseYear () {
-
         //extract from menu the current year chosen
         String currentYear = getYearFromElement();
 
@@ -52,47 +47,27 @@ public class DatePicker {
         int int_currentYear = Integer.parseInt(currentYear);
 
         if (int_currentYear > int_year) {
-
             while (int_currentYear != int_year) {
-
                 //press the 'previous' button
                 clickElement(prevButton_Xpath);
                 currentYear = getYearFromElement();
                 int_currentYear = Integer.parseInt(currentYear);
-
             }
-
         } else if (int_currentYear < int_year) {
-
             while (int_currentYear != int_year) {
-
                 //press the 'next' button
                 clickElement(nextButton_Xpath);
-
                 currentYear = getYearFromElement();
                 int_currentYear = Integer.parseInt(currentYear);
-
             }
-
         }
-
     }
 
     public String getYearFromElement () {
-
-        return wait.until(
-                ExpectedConditions.presenceOfElementLocated(By.xpath(datePickerSwitch_Xpath))).getText();
-
+        return helper.getTextFromElement(datePickerSwitch_Xpath);
     }
 
     public void clickElement (String xpath) {
-
-        wait.until(ExpectedConditions
-                .presenceOfElementLocated(By.xpath(xpath))).click();
-
+        helper.clickElement(xpath);
     }
-
-
-
-
 }

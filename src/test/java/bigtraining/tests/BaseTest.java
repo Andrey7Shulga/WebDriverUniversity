@@ -21,10 +21,8 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
-
     protected Helper hp;
     protected JSExecutor jsExecutor;
-
     protected ContactUs cu;
     protected ToDoList tdl;
     protected DropD_CheckB_RadioB dcr;
@@ -34,20 +32,11 @@ public class BaseTest {
 
 
     protected final String url = "http://webdriveruniversity.com/index.html";
-//    protected final String url = "https://www.youtube.com/";
-
 
     @BeforeClass
     public void beforeClass() {
-
         //WebDriver setup
         WebDriverManager.chromedriver().setup();
-
-        //driver options
-//        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.setHeadless(true);
-//        driver = new ChromeDriver(chromeOptions);
-
     }
 
     @BeforeMethod
@@ -81,7 +70,6 @@ public class BaseTest {
 
     @AfterMethod
     public void afterMethod() {
-
         if(driver != null) {
             driver.manage().deleteAllCookies();
             driver.quit();
@@ -91,7 +79,6 @@ public class BaseTest {
 
     @AfterClass
     public void afterClass () {
-
         if(driver != null) {
             driver.quit();
         }

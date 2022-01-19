@@ -18,7 +18,6 @@ public class Testing extends BaseTest {
 
     @Test
     public void testContactUsPage () {
-
         //click to get the 'Contact Us' Page
         hp.openPageNeeded(Menu.contact_usXpath, ContactUs.tabName);
 
@@ -46,21 +45,14 @@ public class Testing extends BaseTest {
     @Test(dataProvider = "SubmitToUs", dataProviderClass = ContactUsDataProvider.class)
     public void testContactUsDataProvider(String fnameValue, String lnameValue, String emailValue,
                                       String commentsValue, String message, String messageTwo) {
-
-//        driver.get(url);
-
         //click to get the 'Contact Us' Page
         hp.openPageNeeded(Menu.contact_usXpath, ContactUs.tabName);
-
         //type data to be verified
         cu.typeDataProvider(fnameValue, lnameValue, emailValue, commentsValue);
-
         //click on submit button
         hp.clickElement(ContactUs.submitButtonXpath);
-
         //messages assertion
         hp.messagePageHandling(message, messageTwo);
-
     }
 
 
@@ -87,27 +79,20 @@ public class Testing extends BaseTest {
          assertEquals(ButtonClick.jsPassText, hp.getTextFromElement(ButtonClick.jsPassTextXpath));
          hp.sleep(1000);
          hp.clickElement(ButtonClick.jsCloseButton);
-
-
      }
 
 
     @Test
     public void toDoList() {
-
         //click to get the 'TO DO LIST' Page
         hp.openPageNeeded(Menu.toDoList_click_Xpath, ToDoList.tabName);
-
         //create and check a list of elements names
         List<String> containerNames = tdl.checkContainerSizeAndGetNamesList(3);
-
         tdl.findNeededElementXpath(containerNames, ToDoList.nameToDelete);
         hp.hoverAnElementNeeded(ToDoList.elementToDeleteXpath);
-
         //delete an element
         hp.clickElement(ToDoList.elementDeleteButtonXpath);
         hp.waitUntilElementsValueIsAbsence(ToDoList.elementXpathToFindText, ToDoList.nameToDelete);
-
         //check a list of elements names
         tdl.checkContainerSizeAndGetNamesList(2);
 
@@ -118,12 +103,10 @@ public class Testing extends BaseTest {
         tdl.checkContainerSizeAndGetNamesList(3);
 
         hp.sleep(2000);
-
     }
 
     @Test
     public void dropdownBlock () {
-
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
         hp.openPageNeeded(Menu.dropChechRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
 
@@ -131,13 +114,11 @@ public class Testing extends BaseTest {
         hp.selectDropDownElement(DropD_CheckB_RadioB.ddmFirstXpath, "sql");
         hp.selectDropDownElement(DropD_CheckB_RadioB.ddmSecondXpath, "junit");
         hp.selectDropDownElement(DropD_CheckB_RadioB.ddmThirdXpath, "css");
-
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "SQL");
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "JUnit");
         hp.waitUntilElementIsPresented(DropD_CheckB_RadioB.ddmAreaXpath, "CSS");
 
         hp.sleep(2000);
-
     }
 
     @Test
@@ -160,12 +141,10 @@ public class Testing extends BaseTest {
         dcr.selectNeededElements(abc, "Option 2", "Option 4");
 
         hp.sleep(2000);
-
     }
 
     @Test
     public void radioButtonsBlock () {
-
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
         hp.openPageNeeded(Menu.dropChechRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
 
@@ -175,14 +154,11 @@ public class Testing extends BaseTest {
 
         //select radioButtons alternately checking if only one is selected at the same time
         dcr.activateRadioButtonsAndCheckCounting (abc);
-
         hp.sleep(2000);
-
     }
 
     @Test
     public void radioButtonsDisabledBlock () {
-
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
          hp.openPageNeeded(Menu.dropChechRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
 
@@ -192,14 +168,11 @@ public class Testing extends BaseTest {
 
         //select radioButtons alternately checking if only one is disabled
         hp.checkWebElementsListForDisabledElement(abc, 2, "cabbage");
-
         hp.sleep(2000);
-
     }
 
     @Test
     public void dropDownWithDisabledElement () {
-
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
         hp.openPageNeeded(Menu.dropChechRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
 
@@ -208,14 +181,11 @@ public class Testing extends BaseTest {
                 DropD_CheckB_RadioB.ddDisablebCommonXpath + "/option", 4);
 
         hp.checkWebElementsListForDisabledElement(abc, 3, "orange");
-
         hp.sleep(2000);
-
     }
 
     @Test
     public void actions () {
-
         hp.openPageNeeded(Menu.actions_Xpath, ActionsTest.tabName);
 
         //drop and down and check the result
@@ -262,14 +232,11 @@ public class Testing extends BaseTest {
         hp.clickAndHoldTest(ActionsTest.clickAndHoldXpath);
         String text = hp.getTextFromElement(ActionsTest.clickAndHoldXpath);
         assertThat(text).contains("Well done!");
-
         hp.sleep(2000);
-
     }
 
     @Test
     public void closePopupsAndAlerts () {
-
         hp.openPageNeeded(Menu.popUpAlerts_Xpath, PopUpAlerts.tabName);
 
         hp.clickElement(PopUpAlerts.javaScriptAlertButton);
@@ -288,12 +255,10 @@ public class Testing extends BaseTest {
         hp.clickElement(PopUpAlerts.modalAlertClose);
 
         hp.sleep(2000);
-
     }
 
     @Test
     public void appearDisappearText() {
-
         hp.openPageNeeded(Menu.appearDisappearText_Xpath, AccordionTextAffects.tabName);
 
         ata.clickAndWait(
@@ -318,7 +283,6 @@ public class Testing extends BaseTest {
                 AccordionTextAffects.keepClicking_Xpath,
                 AccordionTextAffects.keepClicking_Text,
                 1000);
-
     }
 
     @Test
@@ -370,7 +334,6 @@ public class Testing extends BaseTest {
 
     @Test
     public void autoComplete() {
-
         hp.openPageNeeded(Menu.autoComplete_Xpath, AutocompleteTextfield.tabName);
 
         //send a letter into the input field
@@ -378,8 +341,6 @@ public class Testing extends BaseTest {
 
         //choose an element and make assertions
         actf.chooseElementNeeded();
-
     }
-
 
 }

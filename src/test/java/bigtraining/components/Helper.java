@@ -76,7 +76,6 @@ public class Helper {
 
 
     public void messagePageHandling(String message, String messageTwo) {
-
 //        up to two strings error
         String errorPageXpath = "//body/br";
 
@@ -144,9 +143,7 @@ public class Helper {
 
 
     public String getTextFromElement (String elementXpath) {
-        element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
-        return element.getText();
-
+        return collectPresentedWebElement(elementXpath).getText();
     }
 
     public boolean bodyGetTextToCompare(String text) {

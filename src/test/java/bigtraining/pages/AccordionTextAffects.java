@@ -30,10 +30,8 @@ public class AccordionTextAffects {
     public static final String textForWaiting = "LOADING COMPLETE.";
 
     public AccordionTextAffects (WebDriver driver, WebDriverWait wait) {
-
         this.driver = driver;
         this.wait = wait;
-
     }
 
 

@@ -15,7 +15,6 @@ public class JSExecutor {
     private final Helper hp;
 
     public JSExecutor (WebDriver driver, WebDriverWait wait) {
-
         this.driver = driver;
         this.wait = wait;
         this.js = (JavascriptExecutor) driver;
@@ -24,35 +23,28 @@ public class JSExecutor {
 
 
     public void scrollVertical(int y) {
-
         js.executeScript("window.scrollTo(0," + y + ")");
     }
 
     public void scrollHorizontal(int x) {
-
         js.executeScript("window.scrollTo("+ x +",0)");
     }
 
     public void scrollToCoordinates(int x, int y) {
-
         js.executeScript("window.scrollTo(" + x + "," + y + ")");
     }
 
 
     public void scrollToSpecificElement(String elementXpath) {
-
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elementXpath)));
         js.executeScript("arguments[0].scrollIntoView(true)", element);
-
     }
 
     public void scrollUntilTheBottomOfThePage() {
-
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 
     public void scrollDynamicallyForLoadingPage_loop() {
-
         long initialHeight = ((Number)js.executeScript("return document.body.scrollHeight")).longValue();
 
         while(true) {
@@ -71,7 +63,6 @@ public class JSExecutor {
 
 
     public void testScrollDynamic() {
-
         Object lastHeight = js.executeScript("return document.body.scrollHeight");
 
         while (true) {
@@ -85,15 +76,10 @@ public class JSExecutor {
             lastHeight = newHeight;
         }
         System.out.println("Height is: " + lastHeight.toString());
-
     }
 
-
-
     public void clickOnElement (String ccsPath) {
-
         js.executeScript("document.querySelector('" + ccsPath + "').click();");
-
     }
 
 }

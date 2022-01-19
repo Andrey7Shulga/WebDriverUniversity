@@ -22,10 +22,8 @@ public class Menu {
 
 
     public Menu(WebDriver driver, WebDriverWait wait) {
-
         this.driver = driver;
         this.wait = wait;
-
     }
 
 }
