@@ -56,7 +56,6 @@ public class JSExecutor {
                 break;
             }
             initialHeight = currentHeight;
-
         }
         System.out.println("Height is: " + initialHeight);
     }

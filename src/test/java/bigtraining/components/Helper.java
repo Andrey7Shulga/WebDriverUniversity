@@ -39,6 +39,11 @@ public class Helper {
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
     }
 
+    public WebElement collectVisibleWebElement (String xPath) {
+        Objects.requireNonNull(xPath);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
+    }
+
     public WebElement collectClickableWebElement (String xPath) {
         Objects.requireNonNull(xPath);
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
@@ -126,11 +131,12 @@ public class Helper {
 
 
     public void deselectAllElementsFromList (List<WebElement> abc, String startXpath, String endXpath) {
-        for (int i=0; i < abc.size(); i++ ) {
-            int index = i + 1;
+        for (WebElement el : abc) {
+            int index = abc.indexOf(el) + 1;
             WebElement chechBox = collectClickableWebElement(startXpath + "[" + index + "]" + endXpath);
             if (chechBox.isSelected()) {
                 chechBox.click();
+                wait.until(ExpectedConditions.elementSelectionStateToBe(chechBox, false));
             }
             assertFalse(chechBox.isSelected());
         }
@@ -141,9 +147,8 @@ public class Helper {
         sel.selectByValue(value);
     }
 
-
     public String getTextFromElement (String elementXpath) {
-        return collectPresentedWebElement(elementXpath).getText();
+        return collectVisibleWebElement(elementXpath).getText();
     }
 
     public boolean bodyGetTextToCompare(String text) {

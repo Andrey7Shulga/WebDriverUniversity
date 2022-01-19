@@ -26,7 +26,6 @@ public class Testing extends BaseTest {
 
         //compare input data and actual data
         cu.validateInputData();
-
         hp.clickElement(ContactUs.resetButtonXpath);
 
         //validate all the fields to
@@ -39,7 +38,6 @@ public class Testing extends BaseTest {
 
         ///get the element message
         assertEquals(ContactUs.validMessage, hp.getTextFromElement(ContactUs.validMessageXpath));
-
     }
 
     @Test(dataProvider = "SubmitToUs", dataProviderClass = ContactUsDataProvider.class)
@@ -318,18 +316,13 @@ public class Testing extends BaseTest {
 
     @Test
     public void fileUpload() {
-
         hp.openPageNeeded(Menu.fileUpload_Xpath, FileUpload.tabName);
 
         //send file path to an element with type 'file'
         hp.sendKeysToElement(FileUpload.chooseButton, FileUpload.filePath);
-
         hp.clickElement(FileUpload.submitButton);
-
         assertThat(hp.getTextFromAlert()).isEqualTo("Your file has now been uploaded!");
-
         hp.alertAccept();
-
     }
 
     @Test
