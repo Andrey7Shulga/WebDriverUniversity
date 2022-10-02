@@ -9,7 +9,6 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
-import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.assertEquals;
@@ -312,12 +311,9 @@ public class Testing extends BaseTest {
     @Test
     public void autoComplete() {
         hp.openPageNeeded(Menu.autoComplete_Xpath, AutocompleteTextfield.tabName);
-
         //send a letter into the input field
         hp.sendKeysToElement(AutocompleteTextfield.inputField_xPath, AutocompleteTextfield.letter);
-
         //choose an element and make assertions
         actf.chooseElementNeeded();
     }
-
 }

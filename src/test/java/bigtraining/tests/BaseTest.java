@@ -15,7 +15,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -60,7 +59,7 @@ public class BaseTest {
         tdl = new ToDoList(driver, wait);
         dcr = new DropD_CheckB_RadioB(wait);
         dp = new DatePicker(driver, wait);
-        ata = new AccordionTextAffects(driver, wait);
+        ata = new AccordionTextAffects(wait);
         actf = new AutocompleteTextfield(wait);
         fu = new FileUpload();
 
