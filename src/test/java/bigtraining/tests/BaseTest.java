@@ -29,6 +29,7 @@ public class BaseTest {
     protected DatePicker dp;
     protected AccordionTextAffects ata;
     protected AutocompleteTextfield actf;
+    protected FileUpload fu;
 
     protected final String url = "http://webdriveruniversity.com/index.html";
 
@@ -61,6 +62,7 @@ public class BaseTest {
         dp = new DatePicker(driver, wait);
         ata = new AccordionTextAffects(driver, wait);
         actf = new AutocompleteTextfield(wait);
+        fu = new FileUpload();
 
         driver.get(url);
     }

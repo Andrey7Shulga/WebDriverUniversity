@@ -116,7 +116,6 @@ public class Testing extends BaseTest {
 
     @Test
     public void checkboxBlock () {
-
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
         hp.openPageNeeded(Menu.dropCheckRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
 
@@ -132,7 +131,6 @@ public class Testing extends BaseTest {
 
         //select elements with names 'Option 2' and 'Option 4'
         dcr.selectNeededElements(abc, "Option 2", "Option 4");
-
         hp.sleep(2000);
     }
 
@@ -253,17 +251,14 @@ public class Testing extends BaseTest {
     @Test
     public void appearDisappearText() {
         hp.openPageNeeded(Menu.appearDisappearText_Xpath, AccordionTextAffects.tabName);
-
         ata.clickAndWait(
                 AccordionTextAffects.manualTesting_Xpath,
                 AccordionTextAffects.manualTesting_Text,
                 1000);
-
         ata.clickAndWait(
                 AccordionTextAffects.cucumberBDD_Xpath,
                 AccordionTextAffects.cucumberBDD_Text,
                 1000);
-
         ata.clickAndWait(
                 AccordionTextAffects.automationTesting_Xpath,
                 AccordionTextAffects.automationTesting_Text,
@@ -271,7 +266,6 @@ public class Testing extends BaseTest {
 
         //wait for proper loading
         hp.waitUntilElementIsPresented(AccordionTextAffects.hiddenTextArea_Xpath, AccordionTextAffects.textForWaiting);
-
         ata.clickAndWait(
                 AccordionTextAffects.keepClicking_Xpath,
                 AccordionTextAffects.keepClicking_Text,
@@ -280,12 +274,9 @@ public class Testing extends BaseTest {
 
     @Test
     public void datePicker() {
-
         hp.openPageNeeded(Menu.datePicker_Xpath, DatePicker.tabName);
-
         hp.clickElement(DatePicker.pickButton_Xpath);
         hp.clickElement(DatePicker.datePickerSwitch_Xpath);
-
         dp.chooseYear();
 
         //get a month needed
@@ -303,9 +294,7 @@ public class Testing extends BaseTest {
         assertThat(hp.getTextFromElement(DatePicker.datePickerSwitch_Xpath))
                 .contains(DatePicker.year)
                 .contains(DatePicker.month);
-
         hp.sleep(3000);
-
     }
 
 
@@ -314,7 +303,7 @@ public class Testing extends BaseTest {
         hp.openPageNeeded(Menu.fileUpload_Xpath, FileUpload.tabName);
 
         //send file path to an element with type 'file'
-        hp.sendKeysToElement(FileUpload.chooseButton, FileUpload.filePath);
+        hp.sendKeysToElement(FileUpload.chooseButton, fu.getAbsoluteFilePath());
         hp.clickElement(FileUpload.submitButton);
         assertThat(hp.getTextFromAlert()).isEqualTo("Your file has now been uploaded!");
         hp.alertAccept();
