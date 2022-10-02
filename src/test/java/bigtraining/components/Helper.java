@@ -5,11 +5,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.*;
 
@@ -17,9 +15,7 @@ public class Helper {
 
     private WebDriver driver;
     private WebDriverWait wait;
-    private WebElement element;
     private Actions actions;
-
 
     public Helper(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -49,54 +45,43 @@ public class Helper {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
     }
 
-    public Alert collectAlert () {
+    public Alert collectAlert() {
         return wait.until(ExpectedConditions.alertIsPresent());
     }
 
-    public void openPageNeeded (String menuClickXpath, String switchToTabXpath) {
+    public void openPageNeeded(String menuClickXpath, String switchToTabXpath) {
         //click to element on Menu Page
         clickElement(menuClickXpath);
         //switch to the next tab
         switchToTab(switchToTabXpath);
-
     }
 
-
-    public boolean switchToTab(String tabName){
+    public void switchToTab(String tabName){
         List<String> tab = new ArrayList<>(driver.getWindowHandles());
         List<String> tabList = new ArrayList<>();
 
-        for (int i=0; i<tab.size(); i++){
-
-            tabList.add(i, driver.switchTo().window(tab.get(i)).getTitle());
+        for (String tabElement : tab) {
+            tabList.add(driver.switchTo().window(tabElement).getTitle());
             driver.switchTo().window(tab.get(0));
-
-            if(tabList.get(i).equals(tabName)){
-                driver.switchTo().window(tab.get(i));
-                return true;
+            if (tabList.get(tab.indexOf(tabElement)).equals(tabName)) {
+                driver.switchTo().window(tabElement);
+                return;
             }
         }
-        return false;
     }
 
-
     public void messagePageHandling(String message, String messageTwo) {
-//        up to two strings error
         String errorPageXpath = "//body/br";
-
-        int size;
         List<WebElement> errorPage = driver.findElements(By.xpath(errorPageXpath));
-
+        int size;
         if (errorPage != null) {
              size = errorPage.size();
-
             if (size == 2) {
                 assertTrue(bodyGetTextToCompare(message));
                 assertTrue(bodyGetTextToCompare(messageTwo));
             } else if (size == 1) {
                 assertTrue(bodyGetTextToCompare(message));
             }
-
         } else  {
             assertTrue(bodyGetTextToCompare(message));
         }
@@ -111,7 +96,7 @@ public class Helper {
     }
 
     public void checkWebElementsListForDisabledElement(List<WebElement> abc, int size, String disabledValue) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         for (WebElement dd : abc) {
             if (dd.isEnabled()) {
                 dd.click();
@@ -122,23 +107,21 @@ public class Helper {
         assertThat(list.toString()).doesNotContain(disabledValue);
     }
 
-
     public List<WebElement> collectWebElementsListAndCheckSize (String xPath, int size) {
         List<WebElement> containerList = collectWebElementsList(xPath);
         assertEquals(size, containerList.size());
         return containerList;
     }
 
-
     public void deselectAllElementsFromList (List<WebElement> abc, String startXpath, String endXpath) {
         for (WebElement el : abc) {
             int index = abc.indexOf(el) + 1;
-            WebElement chechBox = collectClickableWebElement(startXpath + "[" + index + "]" + endXpath);
-            if (chechBox.isSelected()) {
-                chechBox.click();
-                wait.until(ExpectedConditions.elementSelectionStateToBe(chechBox, false));
+            WebElement checkBox = collectClickableWebElement(startXpath + "[" + index + "]" + endXpath);
+            if (checkBox.isSelected()) {
+                checkBox.click();
+                wait.until(ExpectedConditions.elementSelectionStateToBe(checkBox, false));
             }
-            assertFalse(chechBox.isSelected());
+            assertFalse(checkBox.isSelected());
         }
     }
 
@@ -152,10 +135,8 @@ public class Helper {
     }
 
     public boolean bodyGetTextToCompare(String text) {
-        element = driver.findElement(By.tagName("body"));
-        return element.getText().contains(text);
+        return driver.findElement(By.tagName("body")).getText().contains(text);
     }
-
 
     public void clickElement(String elementXpath) {
         collectPresentedWebElement(elementXpath).click();
@@ -313,8 +294,4 @@ public class Helper {
     public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
         return null;
     }
-
-
-
-
 }
