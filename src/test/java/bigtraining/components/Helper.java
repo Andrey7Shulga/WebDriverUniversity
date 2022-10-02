@@ -189,6 +189,13 @@ public class Helper {
                 .perform();
     }
 
+    public void typeAndSubmitNewElement (String elementXPath, String newValue) {
+        actions.click(collectPresentedWebElement(elementXPath))
+                .sendKeys(newValue)
+                .sendKeys(Keys.ENTER)
+                .build().perform();
+    }
+
     /**
      * ACTIONS BLOCK - END
      */

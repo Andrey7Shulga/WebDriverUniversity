@@ -89,7 +89,8 @@ public class Testing extends BaseTest {
         //check a list of elements names
         containerNames = tdl.checkContainerSizeAndGetNamesList();
         assertEquals(2, containerNames.size());
-        tdl.typeAndSubmitNewElement();
+        //submit a new element
+        hp.typeAndSubmitNewElement(ToDoList.newElementFieldXpath, ToDoList.newName);
         hp.waitUntilElementIsPresented(ToDoList.elementXpathToFindText, ToDoList.newName);
         //check a list of elements names
         containerNames = tdl.checkContainerSizeAndGetNamesList();

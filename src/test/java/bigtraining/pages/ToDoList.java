@@ -11,8 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.AssertJUnit.assertEquals;
-
 public class ToDoList {
 
     private final WebDriver driver;
@@ -28,7 +26,7 @@ public class ToDoList {
 
     int index;
     public static final String containerListXpath = "//ul/li";
-    String newElementFieldXpath = "//input";
+    public static final String newElementFieldXpath = "//input";
 
     public ToDoList (WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -54,14 +52,5 @@ public class ToDoList {
                 elementDeleteButtonXpath = elementToDeleteXpath + "/span/i";
             }
         }
-    }
-
-    public void typeAndSubmitNewElement () {
-        WebElement newElementField =
-                wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(newElementFieldXpath)));
-        act.click(newElementField)
-                .sendKeys(newName)
-                .sendKeys(Keys.ENTER)
-                .build().perform();
     }
 }

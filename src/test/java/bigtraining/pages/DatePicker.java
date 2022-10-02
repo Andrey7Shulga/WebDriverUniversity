@@ -1,10 +1,7 @@
 package bigtraining.pages;
 
 import bigtraining.components.Helper;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DatePicker {
@@ -30,17 +27,13 @@ public class DatePicker {
     public static final String prevButton_Xpath = dropDownMenu_Xpath + "//th[@class='prev']";
     public static final String nextButton_Xpath = dropDownMenu_Xpath + "//th[@class='next']";
 
-
-
     public DatePicker (WebDriver driver, WebDriverWait wait) {
         this.helper = new Helper(driver, wait);
     }
 
-
     public void chooseYear () {
         //extract from menu the current year chosen
         String currentYear = getYearFromElement();
-
         //get a year needed
         //parse String to int
         int int_year = Integer.parseInt(year);

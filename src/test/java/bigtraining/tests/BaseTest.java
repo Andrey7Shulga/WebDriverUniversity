@@ -57,7 +57,7 @@ public class BaseTest {
         jsExecutor = new JSExecutor(driver, wait);
         cu = new ContactUs(driver, wait);
         tdl = new ToDoList(driver, wait);
-        dcr = new DropD_CheckB_RadioB(wait);
+        dcr = new DropD_CheckB_RadioB(driver, wait);
         dp = new DatePicker(driver, wait);
         ata = new AccordionTextAffects(wait);
         actf = new AutocompleteTextfield(wait);
