@@ -9,6 +9,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.assertEquals;
@@ -79,21 +80,21 @@ public class Testing extends BaseTest {
         //click to get the 'TO DO LIST' Page
         hp.openPageNeeded(Menu.toDoList_click_Xpath, ToDoList.tabName);
         //create and check a list of elements names
-        List<String> containerNames = tdl.checkContainerSizeAndGetNamesList(3);
+        List<String> containerNames = tdl.checkContainerSizeAndGetNamesList();
+        assertEquals(3, containerNames.size());
         tdl.findNeededElementXpath(containerNames, ToDoList.nameToDelete);
         hp.hoverAnElementNeeded(ToDoList.elementToDeleteXpath);
         //delete an element
         hp.clickElement(ToDoList.elementDeleteButtonXpath);
         hp.waitUntilElementsValueIsAbsence(ToDoList.elementXpathToFindText, ToDoList.nameToDelete);
         //check a list of elements names
-        tdl.checkContainerSizeAndGetNamesList(2);
-
+        containerNames = tdl.checkContainerSizeAndGetNamesList();
+        assertEquals(2, containerNames.size());
         tdl.typeAndSubmitNewElement();
         hp.waitUntilElementIsPresented(ToDoList.elementXpathToFindText, ToDoList.newName);
-
         //check a list of elements names
-        tdl.checkContainerSizeAndGetNamesList(3);
-
+        containerNames = tdl.checkContainerSizeAndGetNamesList();
+        assertEquals(3, containerNames.size());
         hp.sleep(2000);
     }
 

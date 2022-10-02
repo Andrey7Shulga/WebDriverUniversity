@@ -184,7 +184,7 @@ public class Helper {
     }
 
     public void hoverAnElementNeeded (String xPath) {
-        actions.moveToElement(collectPresentedWebElement(xPath), 50, 20)
+        actions.moveToElement(collectPresentedWebElement(xPath))
                 .build()
                 .perform();
     }

@@ -46,7 +46,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(12));
+        wait = new WebDriverWait(driver, 12);
 
         //WebListener setup
         EventFiringWebDriver eventFiringWebDriver = new EventFiringWebDriver(driver);

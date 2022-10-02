@@ -27,7 +27,7 @@ public class ToDoList {
     public static String elementToDeleteXpath = null;
 
     int index;
-    String containerListXpath = "//ul/li";
+    public static final String containerListXpath = "//ul/li";
     String newElementFieldXpath = "//input";
 
     public ToDoList (WebDriver driver, WebDriverWait wait) {
@@ -36,11 +36,9 @@ public class ToDoList {
         act = new Actions(driver);
     }
 
-    public List<String> checkContainerSizeAndGetNamesList (int size) {
+    public List<String> checkContainerSizeAndGetNamesList () {
         List<String> list = new ArrayList<>();
         List<WebElement> containerList = driver.findElements(By.xpath(containerListXpath));
-        assertEquals(size, containerList.size());
-
         for (int i = 1; i <= containerList.size(); i++ ) {
             list.add(driver.findElement(By.xpath("" + containerListXpath + "[" + i + "]" + "")).getText());
         }
