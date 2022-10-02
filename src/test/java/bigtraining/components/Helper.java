@@ -36,7 +36,7 @@ public class Helper {
 
     public WebElement collectPresentedWebElement (String xPath) {
         Objects.requireNonNull(xPath);
-        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
     }
 
     public WebElement collectVisibleWebElement (String xPath) {
@@ -63,8 +63,8 @@ public class Helper {
 
 
     public boolean switchToTab(String tabName){
-        List<String> tab = new ArrayList(driver.getWindowHandles());
-        List<String> tabList = new ArrayList();
+        List<String> tab = new ArrayList<>(driver.getWindowHandles());
+        List<String> tabList = new ArrayList<>();
 
         for (int i=0; i<tab.size(); i++){
 

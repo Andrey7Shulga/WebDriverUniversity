@@ -31,7 +31,7 @@ public class Testing extends BaseTest {
         //validate all the fields to
         cu.validateResetOption();
 
-        //reinput data to submit
+        //re-input data to submit
         cu.typeData();
 
         hp.clickElement(ContactUs.submitButtonXpath);
@@ -41,18 +41,17 @@ public class Testing extends BaseTest {
     }
 
     @Test(dataProvider = "SubmitToUs", dataProviderClass = ContactUsDataProvider.class)
-    public void testContactUsDataProvider(String fnameValue, String lnameValue, String emailValue,
+    public void testContactUsDataProvider(String fNameValue, String lNameValue, String emailValue,
                                       String commentsValue, String message, String messageTwo) {
         //click to get the 'Contact Us' Page
         hp.openPageNeeded(Menu.contact_usXpath, ContactUs.tabName);
         //type data to be verified
-        cu.typeDataProvider(fnameValue, lnameValue, emailValue, commentsValue);
+        cu.typeDataProvider(fNameValue, lNameValue, emailValue, commentsValue);
         //click on submit button
         hp.clickElement(ContactUs.submitButtonXpath);
         //messages assertion
         hp.messagePageHandling(message, messageTwo);
     }
-
 
      @Test
      public void buttonsClickTest () {
@@ -106,7 +105,7 @@ public class Testing extends BaseTest {
     @Test
     public void dropdownBlock () {
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
-        hp.openPageNeeded(Menu.dropChechRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
+        hp.openPageNeeded(Menu.dropCheckRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
 
         //select the dropDown elements needed and check their presenting
         hp.selectDropDownElement(DropD_CheckB_RadioB.ddmFirstXpath, "sql");
@@ -123,7 +122,7 @@ public class Testing extends BaseTest {
     public void checkboxBlock () {
 
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
-        hp.openPageNeeded(Menu.dropChechRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
+        hp.openPageNeeded(Menu.dropCheckRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
 
         //get checkBoxes list
         List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
@@ -144,7 +143,7 @@ public class Testing extends BaseTest {
     @Test
     public void radioButtonsBlock () {
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
-        hp.openPageNeeded(Menu.dropChechRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
+        hp.openPageNeeded(Menu.dropCheckRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
 
         //get radioButtons list
         List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
@@ -158,7 +157,7 @@ public class Testing extends BaseTest {
     @Test
     public void radioButtonsDisabledBlock () {
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
-         hp.openPageNeeded(Menu.dropChechRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
+         hp.openPageNeeded(Menu.dropCheckRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
 
         //get radioButtons list
         List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
@@ -172,7 +171,7 @@ public class Testing extends BaseTest {
     @Test
     public void dropDownWithDisabledElement () {
         //click to get the 'Dropdown Menu(s) | Checkboxe(s) | Radio Button(s)' Page
-        hp.openPageNeeded(Menu.dropChechRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
+        hp.openPageNeeded(Menu.dropCheckRadio_click_Xpath, DropD_CheckB_RadioB.tabName);
 
         //get dropDown options list
         List<WebElement> abc = hp.collectWebElementsListAndCheckSize(
@@ -190,7 +189,7 @@ public class Testing extends BaseTest {
         hp.dragAndDropTest(ActionsTest.dropFromXpath, ActionsTest.dropToXpath);
         hp.waitUntilElementIsPresented(ActionsTest.dropToXpath, "Dropped!");
 
-        //double click on an element
+        //double-click on an element
         hp.doubleClickTest(ActionsTest.doubleClickXpath);
         hp.waitAttributeToHaveValue(ActionsTest.doubleClickXpath, "class", "div-double-click double");
 

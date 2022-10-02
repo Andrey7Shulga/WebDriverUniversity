@@ -6,9 +6,7 @@ public class ContactUsDataProvider {
 
     @DataProvider(name = "SubmitToUs")
     public static Object [][] SubmitToUs() {
-
         return new Object[][] {
-
                 //all the fields valid
                 {"Chris", "Boil", "1@hotmail.com", "Hello, World", "Thank You for your Message!", ""},
 
@@ -28,13 +26,6 @@ public class ContactUsDataProvider {
 
                 //all the fields are missed
                 {"", "", "", "", "Error: all fields are required", "Error: Invalid email address"}
-
-
         };
-
     }
-
-
-
-
 }
