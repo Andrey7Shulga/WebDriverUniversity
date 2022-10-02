@@ -34,17 +34,16 @@ public class ToDoList {
         act = new Actions(driver);
     }
 
-    public List<String> checkContainerSizeAndGetNamesList () {
+    public List<String> checkContainerSizeAndGetNamesList() {
         List<String> list = new ArrayList<>();
         List<WebElement> containerList = driver.findElements(By.xpath(containerListXpath));
-        for (int i = 1; i <= containerList.size(); i++ ) {
-            list.add(driver.findElement(By.xpath("" + containerListXpath + "[" + i + "]" + "")).getText());
-        }
+        containerList.forEach( i ->
+            list.add(driver.findElement(By.xpath("" + containerListXpath + "[" + (containerList.indexOf(i) + 1) + "]" + "")).getText())
+        );
         return list;
     }
 
-    public void findNeededElementXpath (List<String> list, String nameToDelete) {
-
+    public void findNeededElementXpath(List<String> list, String nameToDelete) {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).equals(nameToDelete)) {
                 index =  i + 1;
