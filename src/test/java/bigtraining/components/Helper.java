@@ -23,6 +23,10 @@ public class Helper {
         actions = new Actions(driver);
     }
 
+    public Helper(WebDriverWait wait) {
+        this.wait = wait;
+    }
+
     public Helper() {}
 
     public List<WebElement> collectWebElementsList (String xPath) {

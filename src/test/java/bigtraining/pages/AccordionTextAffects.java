@@ -27,10 +27,11 @@ public class AccordionTextAffects {
     }
 
     public void clickAndWait (String xPath, String textToPresent, int timeout) {
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
+        Helper hp = new Helper(wait);
+        WebElement element = hp.collectClickableWebElement(xPath);
         element.click();
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//body"), textToPresent));
-        new Helper().sleep(timeout);
+        hp.waitUntilElementIsPresented("//body", textToPresent);
+        hp.sleep(timeout);
         element.click();
     }
 }

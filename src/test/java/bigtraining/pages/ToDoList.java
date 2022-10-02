@@ -1,11 +1,9 @@
 package bigtraining.pages;
 
+import bigtraining.components.Helper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -15,7 +13,6 @@ public class ToDoList {
 
     private final WebDriver driver;
     private final WebDriverWait wait;
-    private final Actions act;
 
     public static final String tabName = "WebDriver | To Do List";
     public static final String nameToDelete = "Practice magic";
@@ -31,14 +28,16 @@ public class ToDoList {
     public ToDoList (WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
-        act = new Actions(driver);
     }
 
     public List<String> checkContainerSizeAndGetNamesList() {
         List<String> list = new ArrayList<>();
-        List<WebElement> containerList = driver.findElements(By.xpath(containerListXpath));
-        containerList.forEach( i ->
-            list.add(driver.findElement(By.xpath("" + containerListXpath + "[" + (containerList.indexOf(i) + 1) + "]" + "")).getText())
+        List<WebElement> containerList = new Helper(driver, wait).collectWebElementsList(containerListXpath);
+        containerList.forEach( i -> {
+            int newIndex = containerList.indexOf(i) + 1;
+            String text = driver.findElement(By.xpath("" + containerListXpath + "[" + newIndex + "]" + "")).getText();
+            list.add(text);
+            }
         );
         return list;
     }

@@ -37,13 +37,11 @@ public class DropD_CheckB_RadioB {
 
     public void selectNeededElements (List<WebElement> abc, String opt1, String opt2) {
         int count = 0;
-        for (int i=0; i < abc.size(); i++ ) {
-
-            int index = i + 1;
-            String text = abc.get(i).getText();
+        for (WebElement el : abc) {
+            int index = abc.indexOf(el) + 1;
+            String text = el.getText();
             WebElement checkBox = new Helper(driver, wait)
                     .collectPresentedWebElement(checkBoxesCommonXpath + "[" + index + "]" + checkBoxesEndXpath);
-
             if (opt1.equals(text) || opt2.equals(text)) {
                 if (!checkBox.isSelected()) {
                     checkBox.click();
@@ -61,10 +59,9 @@ public class DropD_CheckB_RadioB {
         Helper hp = new Helper(driver, wait);
         WebElement radioButton, element;
 
-        for (int y=0; y < abc.size(); y++ ) {
-            int ind = y + 1;
+        for (WebElement el1 : abc) {
+            int ind = abc.indexOf(el1) + 1;
             radioButton = hp.collectClickableWebElement(radioButtonsCommonXpath + "[" + ind + "]");
-
             //click if is not selected
             if (!radioButton.isSelected()) {
                 radioButton.click();
@@ -72,14 +69,14 @@ public class DropD_CheckB_RadioB {
             assertTrue(radioButton.isSelected());
             //check others elements for being not selected
             int count = 0;
-            for (int i=0; i < abc.size(); i++ ) {
-                int index = i + 1;
+            for (WebElement el2 : abc) {
+                int index = abc.indexOf(el2) + 1;
                 element = hp.collectClickableWebElement(radioButtonsCommonXpath + "[" + index + "]");
                 if (!element.isSelected()) {
                     count++;
                 }
             }
-            assertEquals(abc.size()-1, count);
+            assertEquals(abc.size() - 1, count);
         }
     }
 }
