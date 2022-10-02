@@ -20,29 +20,29 @@ public class Testing extends BaseTest {
     public void testContactUsPage () {
         //click to get the 'Contact Us' Page
         hp.openPageNeeded(Menu.contact_usXpath, ContactUs.tabName);
-
         //type the data to the fields
         cu.typeData();
-
         //compare input data and actual data
         cu.validateInputData();
         hp.clickElement(ContactUs.resetButtonXpath);
-
         //validate all the fields to
         cu.validateResetOption();
-
         //re-input data to submit
         cu.typeData();
-
         hp.clickElement(ContactUs.submitButtonXpath);
-
-        ///get the element message
+        //get the element message
         assertEquals(ContactUs.validMessage, hp.getTextFromElement(ContactUs.validMessageXpath));
     }
 
     @Test(dataProvider = "SubmitToUs", dataProviderClass = ContactUsDataProvider.class)
-    public void testContactUsDataProvider(String fNameValue, String lNameValue, String emailValue,
-                                      String commentsValue, String message, String messageTwo) {
+    public void testContactUsDataProvider(
+            String fNameValue,
+            String lNameValue,
+            String emailValue,
+            String commentsValue,
+            String message,
+            String messageTwo
+    ) {
         //click to get the 'Contact Us' Page
         hp.openPageNeeded(Menu.contact_usXpath, ContactUs.tabName);
         //type data to be verified
@@ -55,29 +55,24 @@ public class Testing extends BaseTest {
 
      @Test
      public void buttonsClickTest () {
-
          //click to get the 'BUTTON CLICKS' Page
          hp.openPageNeeded(Menu.button_clicks_usXpath, ButtonClick.tabName);
-
          //getting MoveAndClick action asserting a success window message and close the popup window
          hp.actionMoveAndClickElement(ButtonClick.ActionMoveClickButton_Xpath);
          assertEquals(ButtonClick.passText, hp.getTextFromElement(ButtonClick.passTextXpath));
          hp.sleep(1000);
          hp.clickElement(ButtonClick.CloseButton);
-
          //click the WebElement button asserting a success window message and close the popup window
          hp.clickElement(ButtonClick.webElementClickButton_Xpath);
          assertEquals(ButtonClick.webPassText, hp.getTextFromElement(ButtonClick.webPassTextXpath));
          hp.sleep(1000);
          hp.clickElement(ButtonClick.webCloseButton);
-
          //javascript click asserting a success window message and close the popup window
          jsExecutor.clickOnElement("#button2");
          assertEquals(ButtonClick.jsPassText, hp.getTextFromElement(ButtonClick.jsPassTextXpath));
          hp.sleep(1000);
          hp.clickElement(ButtonClick.jsCloseButton);
      }
-
 
     @Test
     public void toDoList() {

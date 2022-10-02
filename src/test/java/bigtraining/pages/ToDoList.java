@@ -22,13 +22,13 @@ public class ToDoList {
     public static final String tabName = "WebDriver | To Do List";
     public static final String nameToDelete = "Practice magic";
     public static final String newName = "New age";
-    int index;
+    public static final String elementXpathToFindText = "//body";
     public static String elementDeleteButtonXpath = null;
     public static String elementToDeleteXpath = null;
 
+    int index;
     String containerListXpath = "//ul/li";
     String newElementFieldXpath = "//input";
-    public static final String elementXpathToFindText = "//body";
 
     public ToDoList (WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -37,25 +37,19 @@ public class ToDoList {
     }
 
     public List<String> checkContainerSizeAndGetNamesList (int size) {
-
-        List<String> list = new ArrayList<String>();
-
+        List<String> list = new ArrayList<>();
         List<WebElement> containerList = driver.findElements(By.xpath(containerListXpath));
         assertEquals(size, containerList.size());
 
         for (int i = 1; i <= containerList.size(); i++ ) {
-
             list.add(driver.findElement(By.xpath("" + containerListXpath + "[" + i + "]" + "")).getText());
-
         }
         return list;
-
     }
 
     public void findNeededElementXpath (List<String> list, String nameToDelete) {
 
         for (int i = 0; i < list.size(); i++) {
-
             if (list.get(i).equals(nameToDelete)) {
                 index =  i + 1;
                 elementToDeleteXpath = containerListXpath + "[" + index + "]";
@@ -64,18 +58,12 @@ public class ToDoList {
         }
     }
 
-
-
     public void typeAndSubmitNewElement () {
-
         WebElement newElementField =
                 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(newElementFieldXpath)));
-
         act.click(newElementField)
                 .sendKeys(newName)
                 .sendKeys(Keys.ENTER)
                 .build().perform();
-
     }
-
 }
